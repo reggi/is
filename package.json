@@ -1,0 +1,28 @@
+{
+  "name": "is",
+  "version": "0.0.0",
+  "description": "A set of predicates to make your js value testing easier and more understandable",
+  "main": "is.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "na"
+  },
+  "keywords": [
+    "predicates",
+    "predicates",
+    "pred"
+  ],
+  "author": "Trevor Landau <landautrevor@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "grunt-contrib-jshint": "~0.7.2",
+    "load-grunt-tasks": "~0.2.0",
+    "grunt": "~0.4.2",
+    "grunt-mocha-test": "~0.8.1",
+    "lodash": "~2.4.1"
+  }
+}

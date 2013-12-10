@@ -1,0 +1,23 @@
+{
+  "name": "is",
+  "version": "0.0.0",
+  "authors": [
+    "Trevor Landau <landautrevor@gmail.com>"
+  ],
+  "description": "A set of predicates to make your js value testing easier and more understandable",
+  "main": "is.js",
+  "keywords": [
+    "pred",
+    "predicates",
+    "predicate"
+  ],
+  "license": "MIT",
+  "homepage": "na",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
