@@ -1,21 +1,28 @@
 {
   "name": "is",
-  "version": "0.0.0",
-  "description": "A set of predicates to make your js value testing easier and more understandable",
+  "version": "0.0.1",
+  "description": "A set of predicates to make your js value testing easier and more readable",
   "main": "is.js",
+  "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html"
   },
   "repository": {
     "type": "git",
-    "url": "na"
+    "url": "http://github.com/landau/is"
+  },
+  "bugs": {
+    "url": "http://github.com/landau/is/issues"
   },
   "keywords": [
     "predicates",
     "predicates",
     "pred"
   ],
-  "author": "Trevor Landau <landautrevor@gmail.com>",
+  "travis-cov": {
+    "threshold": 95
+  },
   "license": "MIT",
   "devDependencies": {
     "coffee-script": "~1.6.3",
@@ -23,6 +30,12 @@
     "load-grunt-tasks": "~0.2.0",
     "grunt": "~0.4.2",
     "grunt-mocha-test": "~0.8.1",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "grunt-contrib-uglify": "~0.2.7",
+    "jshint-stylish": "~0.1.4",
+    "should": "~2.1.1",
+    "grunt-docco": "~0.3.0",
+    "cover": "~0.2.9",
+    "grunt-contrib-watch": "~0.5.3"
   }
 }
