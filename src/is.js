@@ -44,6 +44,13 @@
     };
   }
 
+  function prop(p) {
+    return function (o) {
+      if (is.object(o)) return o[p];
+      return o;
+    };
+  }
+
   is.exists = function (val) {
     return val != null;
   };
@@ -91,8 +98,13 @@
   // drop in comparator for sort and methods alike
   // TODO allow user to pass in a 2nd prop field for object property
   // comparisons
-  is.cmp = function (pred) {
+  is.cmp = function (pred, p) {
+    if (!is.fn(pred)) throw new TypeError('predicate provided is not a function');
+    var propFn = prop(p);
+
     return function (a, b) {
+      a = propFn(a);
+      b = propFn(b);
       if (pred(a, b)) return 1;
       if (pred(b, a)) return -1;
       return 0;
@@ -156,6 +168,8 @@
   is.str = is.string;
 
 
+  // TODO
+  // deep equal for objects
 
   // TODO
   // Implement all so we can do something like is.all().eq(a, b).greaterEq(a. b)

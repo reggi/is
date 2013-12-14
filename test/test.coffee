@@ -118,8 +118,37 @@ describe 'is', ->
         _.each vals, (val) -> addTest methodName, val, truthy
 
   describe '#arguments', ->
-    it "should return true for arguments", ->
+    it 'should return true for arguments', ->
       fn = -> (Is.arguments(arguments)).should.be.true
       fn()
 
     _.each falses.concat(truths), (val) -> addTest('arguments', val, false)
+
+  describe '#cmp', ->
+    it 'should throw a type error', ->
+      try
+        Is.cmp()
+      catch e
+        e.should.be.instanceOf TypeError
+
+    it 'should return a function', ->
+      (Is.cmp(Is.greater)).should.be.instanceOf Function
+
+    it 'should sort values with a specified predicate', ->
+      vals = _.shuffle _.range 10
+      vals.sort(Is.cmp(Is.greater))
+      c = 0
+      _.each vals, (val) -> val.should.equal c++
+
+    it 'should sort values with a specified predicate and property accessor', ->
+      vals = _.shuffle [
+        { name: 'albert'}
+        { name: 'bob'}
+        { name: 'cat'}
+      ]
+
+      vals.sort(Is.cmp(Is.less, 'name'))
+      vals[0].name.should.equal 'cat'
+      vals[1].name.should.equal 'bob'
+      vals[2].name.should.equal 'albert'
+
