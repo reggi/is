@@ -4,13 +4,17 @@ _ = require 'lodash'
 Is = require '../src/is'
 require 'should'
 
-addTest = (fn, val, expected) ->
+addTest = (fn, val, expected, shorthand) ->
   if Array.isArray(val) and val.length
     it "should return `#{expected}` for values `#{val}`", ->
       (Is[fn].apply(null, val)).should.be[expected]
   else
     it "should return `#{expected}` for value `#{val}`", ->
         (Is[fn](val)).should.be[expected]
+
+  if _.isString shorthand
+    it "should have a shorthand method `#{shorthand}` for method `#{fn}`", ->
+      Is[shorthand].should.equal Is[fn]
 
 
 truths = ['dog', 1, [], {}]
@@ -76,9 +80,10 @@ describe 'is', ->
       truthy: [new Date]
       falsey: [{}, 'a', 1, []]
 
-    rgx:
+    RegExp:
       truthy: [/\d/]
       falsey: [{}, 'a', 1, [], new Date]
+      shorthand: 'rgx'
 
     NaN:
       truthy: [NaN]
@@ -87,35 +92,32 @@ describe 'is', ->
     function:
       truthy: [() ->]
       falsey: [{}, 'a', 1, new Date]
-
-    fn:
-      truthy: [() ->]
-      falsey: [{}, 'a', 1, new Date]
+      shorthand: 'fn'
 
     number:
       truthy: [1]
       falsey: [{}, [], '1', new Date]
-
-    num:
-      truthy: [1]
-      falsey: [{}, [], '1', new Date]
+      shorthand: 'num'
 
     string:
       truthy: ['dog']
       falsey: [{}, [], 1, new Date]
+      shorthand: 'str'
 
-    str:
-      truthy: ['dog']
-      falsey: [{}, [], 1, new Date]
-
-
+    finite:
+      truthy: [1, 2e64]
+      falsey: [{}, [], NaN, -Infinity, Infinity, '1', new Date]
 
   # Dynamically add tests over `tests` object
   _.each tests, (expectations, methodName) ->
     describe "#{methodName}", ->
-      _.each expectations, (vals, truthyStr) ->
-        truthy = if truthyStr == 'truthy' then true else false
-        _.each vals, (val) -> addTest methodName, val, truthy
+      {shorthand, truthy, falsey} = expectations
+
+      _.each truthy, (val) ->
+        addTest methodName, val, true, shorthand
+
+      _.each falsey, (val) ->
+        addTest methodName, val, false, shorthand
 
   describe '#arguments', ->
     it 'should return true for arguments', ->

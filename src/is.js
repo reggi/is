@@ -134,12 +134,16 @@
     return is.eqStr(val, '[object Date]');
   };
 
-  is.rgx = function (val) {
+  is.RegExp = function (val) {
     return is.eqStr(val, '[object RegExp]');
   };
 
-  is.finite = function (val) {
-    return isFinite(val) && !isNaN(parseFloat(val));
+  is.rgx = is.RegExp;
+
+  // ES6 spec
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite
+  is.finite = Number.isFinite || function (val) {
+    return is.number(val) && isFinite(val);
   };
 
   is.NaN = function (val) {
@@ -172,6 +176,6 @@
   // deep equal for objects
 
   // TODO
-  // Implement all so we can do something like is.all().eq(a, b).greaterEq(a. b)
+  // Implement is.all so we can do something like is.all().eq(a, b).greaterEq(a. b)
   // which will behave like &&, also, implement is.some to behave like ||
 }).call(this);
