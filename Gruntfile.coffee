@@ -51,11 +51,6 @@ module.exports = (grunt) ->
           captureFile: 'coverage.html'
         src: ['test/**/*.coffee']
 
-      travis:
-        options:
-          reporter: 'travis-cov'
-        src: ['test/**/*.coffee']
-
     #coffee:
     #  test:
     #    options:
@@ -123,10 +118,6 @@ module.exports = (grunt) ->
   grunt.registerTask 'test', [
     'jshint:hint'
     'mochaTest:test'
-  ]
-
-  grunt.registerTask 'travis', [
-    'test'
   ]
 
   ### TODO
