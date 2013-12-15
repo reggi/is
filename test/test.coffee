@@ -107,6 +107,10 @@ describe 'is', ->
     finite:
       truthy: [1, 2e64]
       falsey: [{}, [], NaN, -Infinity, Infinity, '1', new Date]
+      
+    int:
+      truthy: [1, 2e64, -5, 0]
+      falsey: [{}, [], NaN, 1.2, -Infinity, Infinity, '1', new Date]
 
   # Dynamically add tests over `tests` object
   _.each tests, (expectations, methodName) ->

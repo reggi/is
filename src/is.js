@@ -1,8 +1,3 @@
-/*
- *  is.js 0.0.1
- * (c) 2013 Trevor Landau
- * is.js may be freely distributed under the MIT license.
- */
 (function () {
   'use strict';
 
@@ -154,6 +149,10 @@
     return is.eqStr(val, '[object Arguments]');
   };
 
+  is.error = function (val) {
+    return is.eqStr(val, '[object Error]');
+  };
+
   // creates fns for is.string, etc
   function typeofBuilder(type) {
     return function (val) {
@@ -171,6 +170,9 @@
   is.num = is.number;
   is.str = is.string;
 
+  is.int = function (val) {
+    return is.num(val) && is.equal(val % 1, 0);
+  };
 
   // TODO
   // deep equal for objects
