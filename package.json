@@ -1,11 +1,11 @@
 {
   "name": "is-predicate",
   "version": "0.1.0",
-  "description": "A set of predicates to make your js value testing easier and more readable",
+  "description": "A set of predicates to make your js value testing better",
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
-    "prepublish": "grunt",
+    "mypublish": "grunt && npm publish",
     "test": "./node_modules/grunt-cli/bin/grunt test --verbose",
     "build": "grunt build",
     "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html"
