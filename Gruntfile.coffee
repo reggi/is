@@ -1,5 +1,15 @@
 'use strict'
 
+bannerStr = """
+  /*
+   * @license is.js <%= pkg.version %>
+   * (c) 2013 <%= pkg.author %>
+   * is.js may be freely distributed under the MIT license.
+   * Generated <%= grunt.template.today("yyyy-mm-dd") %>
+   */
+
+"""
+
 module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
 
@@ -7,6 +17,7 @@ module.exports = (grunt) ->
   # verify server does minification
   # concat
   grunt.initConfig
+    pkg: grunt.file.readJSON 'package.json'
     watch:
       interrupt: true
       test:
@@ -53,6 +64,40 @@ module.exports = (grunt) ->
           output: 'docs'
         src: ['src/**/*.js']
 
+    clean:
+      build: ['dist']
 
-  grunt.registerTask 'default', ['test', 'uglify:build']
+    uglify:
+      options:
+        banner: bannerStr
+        preserveComments: 'some'
+        report: 'gzip'
+      build:
+        files:
+          'dist/is.min.js': ['src/is.js']
+
+    copy:
+      build:
+        expand: true
+        src: 'src/is.js'
+        dest: 'dist/'
+        flatten: true
+        filter: 'isFile'
+
+    usebanner:
+      build:
+        options:
+          position: 'top'
+          banner: bannerStr
+        files:
+          src: ['dist/is.js']
+
+
+  grunt.registerTask 'default', ['test', 'build']
+  grunt.registerTask 'build', [
+    'clean:build'
+    'copy:build'
+    'usebanner:build'
+    'uglify:build'
+  ]
   grunt.registerTask 'test', ['jshint:hint', 'mochaTest:test']
