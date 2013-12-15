@@ -142,7 +142,7 @@ describe 'is', ->
 
     it 'should sort values with a specified predicate', ->
       vals = _.shuffle _.range 10
-      vals.sort(Is.cmp(Is.greater))
+      vals.sort(Is.cmp(Is.less))
       c = 0
       _.each vals, (val) -> val.should.equal c++
 
@@ -153,7 +153,7 @@ describe 'is', ->
         { name: 'cat'}
       ]
 
-      vals.sort(Is.cmp(Is.less, 'name'))
+      vals.sort(Is.cmp(Is.greater, 'name'))
       vals[0].name.should.equal 'cat'
       vals[1].name.should.equal 'bob'
       vals[2].name.should.equal 'albert'

@@ -45,6 +45,8 @@
       return o;
     };
   }
+  
+  // Start exposed methods
 
   is.exists = function (val) {
     return val != null;
@@ -100,20 +102,20 @@
     return function (a, b) {
       a = propFn(a);
       b = propFn(b);
-      if (pred(a, b)) return 1;
-      if (pred(b, a)) return -1;
+      if (pred(a, b)) return -1;
+      if (pred(b, a)) return 1;
       return 0;
     };
   };
 
   // Type checking predicates
-  is.eqfn = function (fn) {
+  function eqfn(fn) {
     return function (a, b) {
       return is.equal(fn(a), b);
     };
-  };
+  }
 
-  is.eqStr = is.eqfn(toString);
+  is.eqStr = eqfn(toString);
 
   // Object type checks
   is.object = function (val) {
@@ -176,6 +178,7 @@
 
   // TODO
   // deep equal for objects
+  // instanceof!
 
   // TODO
   // Implement is.all so we can do something like is.all().eq(a, b).greaterEq(a. b)
