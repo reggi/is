@@ -1,11 +1,7 @@
-/node_modules/
-/npm-debug.log
-
 /.coverage_data/
 /.coverage_debug/
 /cover_html/
 
-/test/
 /.coverignore
 /.jshintrc
 /.npmignore

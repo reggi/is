@@ -13,9 +13,6 @@ bannerStr = """
 module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
 
-  # TODO 
-  # verify server does minification
-  # concat
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
     watch:
@@ -43,6 +40,7 @@ module.exports = (grunt) ->
       options:
         reporter: 'spec'
         require: 'coffee-script'
+
       test:
         src: ['test/**/*.coffee']
 
@@ -58,6 +56,27 @@ module.exports = (grunt) ->
           reporter: 'travis-cov'
         src: ['test/**/*.coffee']
 
+    #coffee:
+    #  test:
+    #    options:
+    #      bare: true
+    #    files:
+    #      'test/test.js': 'test/test.coffee'
+
+    #mochacov:
+    #  options:
+    #    reporter: 'spec'
+    #    bail: true
+
+    #  test:
+    #    options:
+    #      colors: true
+
+    #  cov:
+    #    options:
+    #      reporter: 'mocha-term-cov-reporter'
+    #      coverage: true
+
     docco:
       docs:
         options:
@@ -66,6 +85,7 @@ module.exports = (grunt) ->
 
     clean:
       build: ['dist']
+      test: ['test/test.js']
 
     uglify:
       options:
@@ -92,7 +112,6 @@ module.exports = (grunt) ->
         files:
           src: ['dist/is.js']
 
-
   grunt.registerTask 'default', ['test', 'build']
   grunt.registerTask 'build', [
     'clean:build'
@@ -100,4 +119,23 @@ module.exports = (grunt) ->
     'usebanner:build'
     'uglify:build'
   ]
-  grunt.registerTask 'test', ['jshint:hint', 'mochaTest:test']
+
+  grunt.registerTask 'test', [
+    'jshint:hint'
+    'mochaTest:test'
+  ]
+
+  ### TODO
+  grunt.registerTask 'test', [
+    'jshint:hint'
+    'coffee:test'
+    'mochacov:test'
+    'clean:test'
+  ]
+
+  grunt.registerTask 'cov', [
+    'coffee:test'
+    'mochacov:cov'
+    'clean:test'
+  ]
+  ###
