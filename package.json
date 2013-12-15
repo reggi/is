@@ -6,7 +6,7 @@
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
     "prepublish": "grunt",
-    "test": "grunt test",
+    "test": "grunt travis --verbose",
     "build": "grunt build",
     "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html"
   },
@@ -42,9 +42,6 @@
     "cover": "~0.2.9",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-banner": "~0.2.0",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-mocha-cov": "~0.1.1",
-    "grunt-contrib-coffee": "~0.7.0"
+    "grunt-contrib-copy": "~0.4.1"
   }
 }

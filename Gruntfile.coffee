@@ -125,6 +125,10 @@ module.exports = (grunt) ->
     'mochaTest:test'
   ]
 
+  grunt.registerTask 'travis', [
+    'test'
+  ]
+
   ### TODO
   grunt.registerTask 'test', [
     'jshint:hint'
