@@ -92,9 +92,7 @@
   };
 
 
-  // drop in comparator for sort and methods alike
-  // TODO allow user to pass in a 2nd prop field for object property
-  // comparisons
+  // comparator creator
   is.cmp = function (pred, p) {
     if (!is.fn(pred)) throw new TypeError('predicate provided is not a function');
     var propFn = prop(p);
@@ -109,6 +107,9 @@
   };
 
   // Type checking predicates
+  
+  // Create an fn function that runs a provided function on the first value
+  // to be compared with the second.
   function eqfn(fn) {
     return function (a, b) {
       return is.equal(fn(a), b);
