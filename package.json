@@ -5,7 +5,7 @@
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
-    "mypublish": "grunt && npm publish",
+    "mypublish": "grunt && npm publish && bower publish",
     "test": "./node_modules/grunt-cli/bin/grunt test --verbose",
     "build": "grunt build",
     "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html"
@@ -43,6 +43,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-banner": "~0.2.0",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-cli": "~0.1.11"
+    "grunt-cli": "~0.1.11",
+    "grunt-contrib-yuidoc": "~0.5.0"
   }
 }
