@@ -1,0 +1,623 @@
+{
+    "project": {
+        "name": "is-predicate",
+        "description": "A set of predicate functions to improve your value testing and comparisons.",
+        "version": "0.1.0",
+        "url": ""
+    },
+    "files": {
+        "src/is.js": {
+            "name": "src/is.js",
+            "modules": {
+                "is": 1
+            },
+            "classes": {},
+            "fors": {
+                "is": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "is": {
+            "name": "is",
+            "submodules": {},
+            "classes": {
+                "is": 1
+            },
+            "fors": {
+                "is": 1
+            },
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/is.js",
+            "line": 1,
+            "description": "is.js - is NOT an assertion library",
+            "itemtype": "main"
+        }
+    },
+    "classes": {
+        "is": {
+            "name": "is",
+            "shortname": "is",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "is",
+            "namespace": ""
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/is.js",
+            "line": 58,
+            "description": "Tests if a value is not null or undefined",
+            "itemtype": "method",
+            "name": "exists",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 70,
+            "description": "Tests if a value exists and isn't false",
+            "itemtype": "method",
+            "name": "truthy",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 81,
+            "description": "Tests if a value is false and doesn't exist",
+            "itemtype": "method",
+            "name": "falsey",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 90,
+            "description": "Tests if a value is null",
+            "itemtype": "method",
+            "name": "null",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 101,
+            "description": "Tests if a value is undefined",
+            "itemtype": "method",
+            "name": "undef",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 114,
+            "description": "Tests if 2 values are strict equal",
+            "itemtype": "method",
+            "name": "equal",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 126,
+            "description": "Tests if 2 values are equal. Values will be coerced",
+            "itemtype": "method",
+            "name": "equal",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 138,
+            "description": "Creates a comparator function ran against a predicate function.\nPass option",
+            "itemtype": "method",
+            "name": "greaterEq",
+            "params": [
+                {
+                    "name": "pred",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "p",
+                    "description": "Key accessor for objects",
+                    "type": "String"
+                }
+            ],
+            "optional": 1,
+            "return": {
+                "description": "Comparator function",
+                "type": "Function"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 150,
+            "description": "Tests if arg a is less than arg b",
+            "itemtype": "method",
+            "name": "less",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 162,
+            "description": "Tests if arg a is less or equal to arg b",
+            "itemtype": "method",
+            "name": "lessEq",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 174,
+            "description": "Tests if arg a is greater than arg b",
+            "itemtype": "method",
+            "name": "greater",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 186,
+            "description": "Tests if arg a is greater or equal to arg b",
+            "itemtype": "method",
+            "name": "greaterEq",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 199,
+            "description": "Creates a comparator function ran against a predicate function.\nPass option",
+            "itemtype": "method",
+            "name": "cmp",
+            "params": [
+                {
+                    "name": "pred",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "p",
+                    "description": "Key accessor for objects",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Comparator function",
+                "type": "Function"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 235,
+            "description": "Checks if value is an Object",
+            "itemtype": "method",
+            "name": "object",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 246,
+            "description": "Checks if value is an Array.\nThis method defaults to ES5 implementation",
+            "itemtype": "method",
+            "name": "object",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 258,
+            "description": "Checks if value is a Date.",
+            "itemtype": "method",
+            "name": "date",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 269,
+            "description": "Checks if value is a RegExp.",
+            "itemtype": "method",
+            "name": "date",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 282,
+            "description": "Checks if value is finite. \nUses the ES6 Spec which is not correct for just isFinite.\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite",
+            "itemtype": "method",
+            "name": "finite",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 295,
+            "description": "Checks if value is NaN",
+            "itemtype": "method",
+            "name": "NaN",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 306,
+            "description": "Checks if value is an arguments object",
+            "itemtype": "method",
+            "name": "arguments",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 317,
+            "description": "Checks if value is an Error object",
+            "itemtype": "method",
+            "name": "error",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 343,
+            "description": "Checks if value is a function.\nAlias - is.function",
+            "itemtype": "method",
+            "name": "fn",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 353,
+            "description": "Checks if value is a number.\nAlias - is.number",
+            "itemtype": "method",
+            "name": "num",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 363,
+            "description": "Checks if value is a string.\nAlias - is.string",
+            "itemtype": "method",
+            "name": "str",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 373,
+            "description": "Checks if value is an integer.",
+            "itemtype": "method",
+            "name": "int",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        },
+        {
+            "file": "src/is.js",
+            "line": 385,
+            "description": "Validates that an object is an instance of a given Class.\nYou can create a instance checking function by providing only the class.\nTo test immediately, provide the instance object as well.",
+            "itemtype": "method",
+            "name": "instance",
+            "params": [
+                {
+                    "name": "Cls",
+                    "description": "The class to check instanceof with",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "inst",
+                    "description": "The object to test against instanceof",
+                    "type": "Mixed",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "is",
+            "module": "is"
+        }
+    ],
+    "warnings": []
+}

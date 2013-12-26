@@ -15,6 +15,7 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
+
     watch:
       interrupt: true
       test:
@@ -39,16 +40,16 @@ module.exports = (grunt) ->
     mochaTest:
       options:
         reporter: 'spec'
-        require: 'coffee-script'
+        require : 'coffee-script'
 
       test:
         src: ['test/**/*.coffee']
 
       coverage:
         options:
-          reporter: 'html-cov'
-          quiet: true
-          captureFile: 'coverage.html'
+          reporter    : 'html-cov'
+          quiet       : true
+          captureFile : 'coverage.html'
         src: ['test/**/*.coffee']
 
     #coffee:
@@ -72,6 +73,7 @@ module.exports = (grunt) ->
     #      reporter: 'mocha-term-cov-reporter'
     #      coverage: true
 
+    # Set this up to write somewhere else
     docco:
       docs:
         options:
@@ -79,35 +81,53 @@ module.exports = (grunt) ->
         src: ['src/**/*.js']
 
     clean:
-      build: ['dist']
-      test: ['test/test.js']
+      build : ['dist']
+      test  : ['test/test.js']
+      docs  : ['docs']
 
     uglify:
       options:
-        banner: bannerStr
+        banner          : bannerStr
         preserveComments: 'some'
-        report: 'gzip'
+        report          : 'gzip'
       build:
         files:
           'dist/is.min.js': ['src/is.js']
 
     copy:
       build:
-        expand: true
-        src: 'src/is.js'
-        dest: 'dist/'
-        flatten: true
-        filter: 'isFile'
+        expand  : true
+        src     : 'src/is.js'
+        dest    : 'dist/'
+        flatten : true
+        filter  : 'isFile'
 
     usebanner:
       build:
         options:
           position: 'top'
-          banner: bannerStr
+          banner  : bannerStr
         files:
           src: ['dist/is.js']
 
-  grunt.registerTask 'default', ['test', 'build']
+    yuidoc:
+      build:
+        name        : '<%= pkg.name %>'
+        description : '<%= pkg.description %>'
+        version     : '<%= pkg.version %>'
+        url         : '<%= pkg.homepage %>'
+        options:
+          paths : 'src/'
+          themedir : 'node_modules/yuidoc-bootstrap-theme'
+          helpers  : [
+            'node_modules/yuidoc-bootstrap-theme/helpers/helpers.js'
+          ]
+          outdir   : 'docs/'
+          quiet    : false
+
+  grunt.registerTask 'default', ['test', 'build', 'docs']
+
+  # Build tasks
   grunt.registerTask 'build', [
     'clean:build'
     'copy:build'
@@ -115,6 +135,13 @@ module.exports = (grunt) ->
     'uglify:build'
   ]
 
+  # Docs tasks
+  grunt.registerTask 'docs', [
+    'clean:docs'
+    'yuidoc:build'
+  ]
+
+  # Test tasks
   grunt.registerTask 'test', [
     'jshint:hint'
     'mochaTest:test'

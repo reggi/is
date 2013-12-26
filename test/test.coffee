@@ -4,6 +4,11 @@ _ = require 'lodash'
 Is = require '../src/is'
 require 'should'
 
+testClasses =
+  Foo: class Foo
+testClasses.Bar = class Bar extends testClasses.Foo
+  
+
 addTest = (fn, val, expected, shorthand) ->
   if Array.isArray(val) and val.length
     it "should return `#{expected}` for values `#{val}`", ->
@@ -112,6 +117,19 @@ describe 'is', ->
       truthy: [1, 2e64, -5, 0]
       falsey: [{}, [], NaN, 1.2, -Infinity, Infinity, '1', new Date]
 
+    'instance':
+      truthy: [
+        [Object, {}]
+        [Array, []]
+        [testClasses.Foo, new testClasses.Foo]
+        [testClasses.Foo, new testClasses.Bar]
+        [testClasses.Bar, new testClasses.Bar]
+      ]
+      falsey: [
+        [Array, {}]
+        [testClasses.Bar, new testClasses.Foo]
+      ]
+
   # Dynamically add tests over `tests` object
   _.each tests, (expectations, methodName) ->
     describe "#{methodName}", ->
@@ -157,4 +175,11 @@ describe 'is', ->
       vals[0].name.should.equal 'cat'
       vals[1].name.should.equal 'bob'
       vals[2].name.should.equal 'albert'
+
+  describe '#instance as a high order fn', ->
+    it 'should return a function that checks instances of Foo', ->
+      fn = Is.instance testClasses.Foo
+      fn.should.be.instanceOf Function
+      fn(new Foo).should.be.ok
+      fn([]).should.be.false
 

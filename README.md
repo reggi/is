@@ -17,7 +17,6 @@ or
 download the file from the [dist](https://github.com/landau/is/dist/is.js) directory
 
 ## Documentation
-- DOCCO
 
 ## TODO
 - deep equal
@@ -30,7 +29,7 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 ## contributing
 - Ensure tests pass.
 - Write new tests for new functionality.
-- Ping me on twitter if I take to long to respond! That probably means I missed the alert/email.
+- Ping me on [twitter](http://twitter.com/trevor_landau) if I take to long to respond! That probably means I missed the alert/email.
 
 ## changlog
 #### 0.1.0

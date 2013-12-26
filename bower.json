@@ -1,18 +1,22 @@
 {
-  "name": "is",
-  "version": "0.0.0",
+  "name": "is-predicate",
+  "version": "0.1.0",
   "authors": [
     "Trevor Landau <landautrevor@gmail.com>"
   ],
-  "description": "A set of predicates to make your js value testing easier and more understandable",
-  "main": "is.js",
+  "description": "A set of predicate functions to improve your value testing and comparisons.",
+  "main": "dist/is.js",
   "keywords": [
-    "pred",
     "predicates",
-    "predicate"
+    "predicate",
+    "pred",
+    "type",
+    "instance",
+    "comparator",
+    "compare"
   ],
   "license": "MIT",
-  "homepage": "na",
+  "homepage": "http://github.com/landau/is"
   "ignore": [
     "**/.*",
     "node_modules",
