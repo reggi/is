@@ -5,12 +5,12 @@
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
-    "mypublish": "grunt && npm publish && bower publish && npm run docs",
+    "mypublish": "grunt && npm publish && bower update && npm run docs",
     "test": "./node_modules/grunt-cli/bin/grunt test --verbose",
     "build": "grunt build",
     "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html",
     "push": "grunt test && git push origin master",
-    "docs": "node ./node_modules/wicked/bin/wicked.js"
+    "docs": "node ./node_modules/wicked/bin/wicked.js -- --configure ./jsdoc-conf.json"
   },
   "homepage": "http://github.com/landau/is",
   "repository": {
