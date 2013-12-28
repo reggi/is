@@ -3,6 +3,8 @@
 
 `is.js` is a predicate library for JS. `is` doesn't have any dependencies and can integrate smoothly into new and existing projects.
 
+[Blog post on is](http://trevorlandau.net/posts/is-js)
+
 > Link to blog post about usecases
 
 ## install
@@ -26,7 +28,6 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 - deep equal on objects
 - chaining
 - test coverage
-- 
 
 ## Author
 [Trevor Landau](http://trevorlandau.net)
