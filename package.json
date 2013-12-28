@@ -5,11 +5,14 @@
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
-    "mypublish": "grunt && npm publish && bower publish",
+    "mypublish": "grunt && npm publish && bower publish && npm run docs",
     "test": "./node_modules/grunt-cli/bin/grunt test --verbose",
     "build": "grunt build",
-    "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html"
+    "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html",
+    "push": "grunt test && git push origin master",
+    "docs": "node ./node_modules/wicked/bin/wicked.js"
   },
+  "homepage": "http://github.com/landau/is",
   "repository": {
     "type": "git",
     "url": "http://github.com/landau/is"
@@ -18,6 +21,7 @@
     "url": "http://github.com/landau/is/issues"
   },
   "keywords": [
+    "functional",
     "predicates",
     "predicate",
     "pred",
@@ -46,8 +50,7 @@
     "grunt-banner": "~0.2.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-cli": "~0.1.11",
-    "grunt-contrib-yuidoc": "~0.5.0",
-    "yuidoc-bootstrap-theme": "git://github.com/kevinlacotaco/yuidoc-bootstrap-theme.git",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "wicked": "~0.1.3"
   }
 }

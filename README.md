@@ -18,17 +18,24 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 
 ## Documentation
 
+[Docs](https://github.com/landau/is/wiki/is.API)
+
+
 ## TODO
-- deep equal
+- underscore style docs
+- deep equal on objects
 - chaining
-- instance type generator/validator
+- test coverage
+- 
 
 ## Author
 [Trevor Landau](http://trevorlandau.net)
 
 ## contributing
+- Suggestions welcome!
 - Ensure tests pass.
 - Write new tests for new functionality.
+- Write docs
 - Ping me on [twitter](http://twitter.com/trevor_landau) if I take to long to respond! That probably means I missed the alert/email.
 
 ## changlog

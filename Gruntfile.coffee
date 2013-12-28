@@ -73,13 +73,6 @@ module.exports = (grunt) ->
     #      reporter: 'mocha-term-cov-reporter'
     #      coverage: true
 
-    # Set this up to write somewhere else
-    docco:
-      docs:
-        options:
-          output: 'docs'
-        src: ['src/**/*.js']
-
     clean:
       build : ['dist']
       test  : ['test/test.js']
@@ -110,22 +103,7 @@ module.exports = (grunt) ->
         files:
           src: ['dist/is.js']
 
-    yuidoc:
-      build:
-        name        : '<%= pkg.name %>'
-        description : '<%= pkg.description %>'
-        version     : '<%= pkg.version %>'
-        url         : '<%= pkg.homepage %>'
-        options:
-          paths : 'src/'
-          themedir : 'node_modules/yuidoc-bootstrap-theme'
-          helpers  : [
-            'node_modules/yuidoc-bootstrap-theme/helpers/helpers.js'
-          ]
-          outdir   : 'docs/'
-          quiet    : false
-
-  grunt.registerTask 'default', ['test', 'build', 'docs']
+  grunt.registerTask 'default', ['test', 'build']
 
   # Build tasks
   grunt.registerTask 'build', [
@@ -138,7 +116,6 @@ module.exports = (grunt) ->
   # Docs tasks
   grunt.registerTask 'docs', [
     'clean:docs'
-    'yuidoc:build'
   ]
 
   # Test tasks

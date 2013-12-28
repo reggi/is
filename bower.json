@@ -7,6 +7,7 @@
   "description": "A set of predicate functions to improve your value testing and comparisons.",
   "main": "dist/is.js",
   "keywords": [
+    "functional",
     "predicates",
     "predicate",
     "pred",
@@ -16,7 +17,7 @@
     "compare"
   ],
   "license": "MIT",
-  "homepage": "http://github.com/landau/is"
+  "homepage": "http://github.com/landau/is",
   "ignore": [
     "**/.*",
     "node_modules",

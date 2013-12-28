@@ -1,14 +1,11 @@
-/**
- * is.js - is NOT an assertion library
- *
- * @module is
- * @main is
-**/
 (function () {
   'use strict';
 
   var root = this;
 
+  /**
+   * @namespace is
+   */
   var is = {};
 
   var old = root.is;
@@ -58,10 +55,12 @@
   /**
    * Tests if a value is not null or undefined
    *
-   * @method exists
-   * @for is
-   * @param {Mixed} val 
-   * @return {Boolean}
+   * @name exists
+   * @memberof is
+   * @function
+   *
+   * @param {*} val 
+   * @return {boolean}
    */
   is.exists = function (val) {
     return val != null;
@@ -70,9 +69,12 @@
   /**
    * Tests if a value exists and isn't false
    *
-   * @method truthy
-   * @param {Mixed} val 
-   * @return {Boolean}
+   * @name truthy
+   * @memberof is
+   * @function
+   *
+   * @param {*} val 
+   * @return {boolean}
    */
   is.truthy = function (val) {
     return val !== false && is.exists(val);
@@ -81,18 +83,24 @@
   /**
    * Tests if a value is false and doesn't exist
    *
-   * @method falsey
-   * @param {Mixed} val 
-   * @return {Boolean}
+   * @name falsey
+   * @memberof is
+   * @function
+   *
+   * @param {*} val 
+   * @return {boolean}
    */
   is.falsey = invertPred(is.truthy);
 
   /**
    * Tests if a value is null
    *
-   * @method null
-   * @param {Mixed} val 
-   * @return {Boolean}
+   * @name null
+   * @memberof is
+   * @function
+   *
+   * @param {*} val 
+   * @return {boolean}
    */
   is.null = function (val) {
     return is.equal(val, null);
@@ -101,9 +109,12 @@
   /**
    * Tests if a value is undefined
    *
-   * @method undef
-   * @param {Mixed} val 
-   * @return {Boolean}
+   * @name undef
+   * @memberof is
+   * @function
+   *
+   * @param {*} val 
+   * @return {boolean}
    */
   is.undef = function (val) {
     return is.equal(val, void 0);
@@ -114,10 +125,13 @@
   /**
    * Tests if 2 values are strict equal
    *
-   * @method equal
-   * @param {Mixed} a
-   * @param {Mixed} b 
-   * @return {Boolean}
+   * @name equal
+   * @memberof is
+   * @function
+   *
+   * @param {*} a
+   * @param {*} b 
+   * @return {boolean}
    */
   is.equal = function (a, b) {
     return a === b;
@@ -126,34 +140,28 @@
   /**
    * Tests if 2 values are equal. Values will be coerced
    *
-   * @method equal
-   * @param {Mixed} a
-   * @param {Mixed} b 
-   * @return {Boolean}
+   * @name eq
+   * @memberof is
+   * @function
+   *
+   * @param {*} a
+   * @param {*} b 
+   * @return {boolean}
    */
   is.eq = function (a, b) {
     return a == b;
   };
 
   /**
-   * Creates a comparator function ran against a predicate function.
-   * Pass option
-   *
-   * @method greaterEq
-   * @param {Function} pred
-   * @param {String} p Key accessor for objects
-   * @optional
-   * @return {Function} Comparator function
-   */
-
-
-  /**
    * Tests if arg a is less than arg b
    *
-   * @method less
-   * @param {Mixed} a
-   * @param {Mixed} b 
-   * @return {Boolean}
+   * @name less
+   * @memberof is
+   * @function
+   *
+   * @param {*} a
+   * @param {*} b 
+   * @return {boolean}
    */
   is.less = function (a, b) {
     return a < b;
@@ -162,10 +170,13 @@
   /**
    * Tests if arg a is less or equal to arg b
    *
-   * @method lessEq
-   * @param {Mixed} a
-   * @param {Mixed} b 
-   * @return {Boolean}
+   * @name lessEq
+   * @memberof is
+   * @function
+   *
+   * @param {*} a
+   * @param {*} b 
+   * @return {boolean}
    */
   is.lessEq = function (a, b) {
     return is.equal(a, b) || is.less(a, b);
@@ -174,10 +185,13 @@
   /**
    * Tests if arg a is greater than arg b
    *
-   * @method greater
-   * @param {Mixed} a
-   * @param {Mixed} b 
-   * @return {Boolean}
+   * @name greater
+   * @memberof is
+   * @function
+   *
+   * @param {*} a
+   * @param {*} b 
+   * @return {boolean}
    */
   is.greater = function (a, b) {
     return a > b;
@@ -186,10 +200,13 @@
   /**
    * Tests if arg a is greater or equal to arg b
    *
-   * @method greaterEq
-   * @param {Mixed} a
-   * @param {Mixed} b 
-   * @return {Boolean}
+   * @name greaterEq
+   * @memberof is
+   * @function
+   *
+   * @param {*} a
+   * @param {*} b 
+   * @return {boolean}
    */
   is.greaterEq = function (a, b) {
     return is.equal(a, b) || is.greater(a, b);
@@ -200,10 +217,13 @@
    * Creates a comparator function ran against a predicate function.
    * Pass option
    *
-   * @method cmp
-   * @param {Function} pred
-   * @param {String} [p] Key accessor for objects
-   * @return {Function} Comparator function
+   * @name cmp
+   * @memberof is
+   * @function
+   *
+   * @param {function} pred
+   * @param {string} [p] - Key accessor for objects
+   * @return {function} - Comparator function
    */
   is.cmp = function (pred, p) {
     if (!is.fn(pred)) throw new TypeError('predicate provided is not a function');
@@ -235,9 +255,12 @@
   /**
    * Checks if value is an Object
    *
-   * @method object
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name object
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.object = function (val) {
     return is.eqStr(val, '[object Object]');
@@ -247,9 +270,12 @@
    * Checks if value is an Array.
    * This method defaults to ES5 implementation
    *
-   * @method object
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name array
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.array = Array.isArray || function (val) {
     return is.eqStr(val, '[object Array]');
@@ -258,9 +284,12 @@
   /**
    * Checks if value is a Date.
    *
-   * @method date
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name date
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.date = function (val) {
     return is.eqStr(val, '[object Date]');
@@ -269,14 +298,21 @@
   /**
    * Checks if value is a RegExp.
    *
-   * @method date
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name RegExp
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.RegExp = function (val) {
     return is.eqStr(val, '[object RegExp]');
   };
 
+  /**
+   * @alias RegExp
+   * @memberof is
+   */
   is.rgx = is.RegExp;
 
   /**
@@ -284,9 +320,12 @@
    * Uses the ES6 Spec which is not correct for just isFinite.
    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite
    *
-   * @method finite
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name finite
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.finite = Number.isFinite || function (val) {
     return is.number(val) && isFinite(val);
@@ -295,9 +334,12 @@
   /**
    * Checks if value is NaN
    *
-   * @method NaN
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name NaN
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.NaN = function (val) {
     return is.number(val) && !is.eq(val, +val);
@@ -306,9 +348,12 @@
   /**
    * Checks if value is an arguments object
    *
-   * @method arguments
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name arguments
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.arguments = function (val) {
     return is.eqStr(val, '[object Arguments]');
@@ -317,9 +362,12 @@
   /**
    * Checks if value is an Error object
    *
-   * @method error
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name error
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.error = function (val) {
     return is.eqStr(val, '[object Error]');
@@ -334,6 +382,18 @@
 
   //--- Create typeof methods
 
+  /**
+   * @alias fn
+   * @memberof is
+   */
+  /**
+   * @alias num
+   * @memberof is
+   */
+  /**
+   * @alias str
+   * @memberof is
+   */
   ['function', 'number', 'string'].forEach(function (type) {
     is[type] = typeofBuilder(type);
   });
@@ -344,9 +404,12 @@
    * Checks if value is a function.
    * Alias - is.function
    *
-   * @method fn
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name fn
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.fn = is.function;
 
@@ -354,9 +417,12 @@
    * Checks if value is a number.
    * Alias - is.number
    *
-   * @method num
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name num
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.num = is.number;
 
@@ -364,18 +430,24 @@
    * Checks if value is a string.
    * Alias - is.string
    *
-   * @method str
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name str
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.str = is.string;
 
   /**
    * Checks if value is an integer.
    *
-   * @method int
-   * @param {Mixed} val
-   * @return {Boolean}
+   * @name int
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
    */
   is.int = function (val) {
     return is.num(val) && is.equal(val % 1, 0);
@@ -387,9 +459,12 @@
    * You can create a instance checking function by providing only the class.
    * To test immediately, provide the instance object as well.
    *
-   * @method instance
-   * @param {Mixed} Cls The class to check instanceof with
-   * @param {Mixed} [inst] The object to test against instanceof
+   * @name instance
+   * @memberof is
+   * @function
+   *
+   * @param {*} Cls - The class to check instanceof with
+   * @param {*} [inst] - The object to test against instanceof
    * @return {Boolean}
    */
   is.instance = function (Cls, inst) {

@@ -6,4 +6,4 @@
 /.jshintrc
 /.npmignore
 /.travis.yml
-/docs
+/bower.json
