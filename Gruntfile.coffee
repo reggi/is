@@ -19,7 +19,7 @@ module.exports = (grunt) ->
     watch:
       interrupt: true
       test:
-        tasks: ['test']
+        tasks: ['pretest', 'test']
         files: [
           '**/*.js'
           '**/*.coffee'
@@ -119,8 +119,11 @@ module.exports = (grunt) ->
   ]
 
   # Test tasks
-  grunt.registerTask 'test', [
+  grunt.registerTask 'pretest', [
     'jshint:hint'
+  ]
+
+  grunt.registerTask 'test', [
     'mochaTest:test'
   ]
 

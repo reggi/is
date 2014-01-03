@@ -394,7 +394,11 @@
    * @alias str
    * @memberof is
    */
-  ['function', 'number', 'string'].forEach(function (type) {
+  /**
+   * @alias bool
+   * @memberof is
+   */
+  ['function', 'number', 'string', 'boolean'].forEach(function (type) {
     is[type] = typeofBuilder(type);
   });
 
@@ -438,6 +442,19 @@
    * @return {boolean}
    */
   is.str = is.string;
+
+  /**
+   * Checks if value is a boolean.
+   * Alias - is.boolean
+   *
+   * @name bool
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
+   */
+  is.bool = is.boolean;
 
   /**
    * Checks if value is an integer.
