@@ -38,8 +38,7 @@ module.exports = (grunt) ->
           ]
 
     jscs:
-      src: 'lib/**/*.js'
-
+      src: ['src/**/*.js']
 
     mochaTest:
       options:
@@ -107,7 +106,7 @@ module.exports = (grunt) ->
         files:
           src: ['dist/is.js']
 
-  grunt.registerTask 'default', ['test', 'build']
+  grunt.registerTask 'default', ['pretest', 'test', 'build']
 
   # Build tasks
   grunt.registerTask 'build', [

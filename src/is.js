@@ -32,18 +32,18 @@
   var toStringProto = ObjProto.toString;
 
   // Helpers
-  function toString(val) {
+  function toString (val) {
     return toStringProto.call(val);
   }
   
   // Reverses the boolean output of the provided predicate
-  function invertPred(pred) {
+  function invertPred (pred) {
     return function () {
       return !pred.apply(pred, arguments);
     };
   }
 
-  function prop(p) {
+  function prop (p) {
     return function (o) {
       if (is.object(o)) return o[p];
       return o;
@@ -212,7 +212,6 @@
     return is.equal(a, b) || is.greater(a, b);
   };
 
-
   /**
    * Creates a comparator function ran against a predicate function.
    * Pass option
@@ -242,7 +241,7 @@
   
   // Create an fn function that runs a provided function on the first value
   // to be compared with the second.
-  function eqfn(fn) {
+  function eqfn (fn) {
     return function (a, b) {
       return is.equal(fn(a), b);
     };
@@ -342,7 +341,7 @@
    * @return {boolean}
    */
   is.NaN = function (val) {
-    return is.number(val) && !is.eq(val, +val);
+    return is.number(val) && !is.eq(val, parseFloat(val));
   };
 
   /**
@@ -374,7 +373,7 @@
   };
 
   // creates fns for is.string, etc
-  function typeofBuilder(type) {
+  function typeofBuilder (type) {
     return function (val) {
       return is.equal(typeof val, type);
     };
@@ -469,7 +468,6 @@
   is.int = function (val) {
     return is.num(val) && is.equal(val % 1, 0);
   };
-
 
   /**
    * Validates that an object is an instance of a given Class.
