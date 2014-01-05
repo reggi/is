@@ -37,6 +37,10 @@ module.exports = (grunt) ->
             'src/**/*.js'
           ]
 
+    jscs:
+      src: 'lib/**/*.js'
+
+
     mochaTest:
       options:
         reporter: 'spec'
@@ -121,6 +125,7 @@ module.exports = (grunt) ->
   # Test tasks
   grunt.registerTask 'pretest', [
     'jshint:hint'
+    'jscs'
   ]
 
   grunt.registerTask 'test', [
