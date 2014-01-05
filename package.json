@@ -1,6 +1,6 @@
 {
   "name": "is-predicate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A set of predicate functions to improve your value testing and comparisons.",
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",

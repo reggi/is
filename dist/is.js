@@ -1,8 +1,8 @@
 /*
- * @license is.js 0.1.0
+ * @license is.js 0.1.1
  * (c) 2013 Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)
  * is.js may be freely distributed under the MIT license.
- * Generated 2013-12-28
+ * Generated 2014-01-05
  */
 
 (function () {
@@ -401,7 +401,11 @@
    * @alias str
    * @memberof is
    */
-  ['function', 'number', 'string'].forEach(function (type) {
+  /**
+   * @alias bool
+   * @memberof is
+   */
+  ['function', 'number', 'string', 'boolean'].forEach(function (type) {
     is[type] = typeofBuilder(type);
   });
 
@@ -445,6 +449,19 @@
    * @return {boolean}
    */
   is.str = is.string;
+
+  /**
+   * Checks if value is a boolean.
+   * Alias - is.boolean
+   *
+   * @name bool
+   * @memberof is
+   * @function
+   *
+   * @param {*} val
+   * @return {boolean}
+   */
+  is.bool = is.boolean;
 
   /**
    * Checks if value is an integer.
