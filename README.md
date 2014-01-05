@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/landau/is.png?branch=master)](https://travis-ci.org/landau/is)
 # is.js - NOT an assertion library
 
-`is.js` is a predicate library for JS. `is` doesn't have any dependencies and can integrate smoothly into new and existing projects.
+`is.js` is a predicate library for JS. `is` doesn't have any dependencies which makes it easy to integrate into new and existing projects.
 
 [Blog post on is](http://trevorlandau.net/posts/is-js)
 
