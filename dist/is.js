@@ -1,8 +1,9 @@
-/*
- * @license is.js 0.1.1
+/**
+ * @license is.js 
+ * @version v0.1.1
  * (c) 2013 Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)
  * is.js may be freely distributed under the MIT license.
- * Generated 2014-01-05
+ * Generated Wed Jan 08 2014 22:00:17 GMT-0500 (EST)
  */
 
 (function () {

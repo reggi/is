@@ -1,0 +1,7 @@
+/**
+ * @license is.js 
+ * @version v<%= pkg.version %>
+ * (c) 2013 <%= pkg.author %>
+ * is.js may be freely distributed under the MIT license.
+ * Generated <%= date %>
+ */

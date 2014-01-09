@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/landau/is.png?branch=master)](https://travis-ci.org/landau/is)
+[![NPM](https://nodei.co/npm/is-predicate.png?downloads=true&stars=true)](https://nodei.co/npm/is-predicate/)
 # is.js - NOT an assertion library
 
 `is.js` is a predicate library for JS. `is` doesn't have any dependencies which makes it easy to integrate into new and existing projects.
