@@ -41,7 +41,7 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 - Ping me on [twitter](http://twitter.com/trevor_landau) if I take too long to respond! That probably means I missed the alert/email.
 
 ## changlog
-#### 0.2.1
+#### 0.2.0
 - Added is.pos
 - Added is.neg
 - Added is.ternary
