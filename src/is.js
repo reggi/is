@@ -35,7 +35,7 @@
   function toString (val) {
     return toStringProto.call(val);
   }
-  
+
   // Reverses the boolean output of the provided predicate
   function invertPred (pred) {
     return function () {
@@ -49,7 +49,13 @@
       return o;
     };
   }
-  
+
+  function not (pred) {
+    return function () {
+      return !pred.apply(is, arguments);
+    };
+  }
+
   // Start exposed methods
 
   /**
@@ -59,7 +65,7 @@
    * @memberof is
    * @function
    *
-   * @param {*} val 
+   * @param {*} val
    * @return {boolean}
    */
   is.exists = function (val) {
@@ -73,7 +79,7 @@
    * @memberof is
    * @function
    *
-   * @param {*} val 
+   * @param {*} val
    * @return {boolean}
    */
   is.truthy = function (val) {
@@ -87,7 +93,7 @@
    * @memberof is
    * @function
    *
-   * @param {*} val 
+   * @param {*} val
    * @return {boolean}
    */
   is.falsey = invertPred(is.truthy);
@@ -99,7 +105,7 @@
    * @memberof is
    * @function
    *
-   * @param {*} val 
+   * @param {*} val
    * @return {boolean}
    */
   is.null = function (val) {
@@ -113,7 +119,7 @@
    * @memberof is
    * @function
    *
-   * @param {*} val 
+   * @param {*} val
    * @return {boolean}
    */
   is.undef = function (val) {
@@ -121,7 +127,7 @@
   };
 
   //---- value comparision methods
-  
+
   /**
    * Tests if 2 values are strict equal
    *
@@ -130,7 +136,7 @@
    * @function
    *
    * @param {*} a
-   * @param {*} b 
+   * @param {*} b
    * @return {boolean}
    */
   is.equal = function (a, b) {
@@ -145,7 +151,7 @@
    * @function
    *
    * @param {*} a
-   * @param {*} b 
+   * @param {*} b
    * @return {boolean}
    */
   is.eq = function (a, b) {
@@ -160,7 +166,7 @@
    * @function
    *
    * @param {*} a
-   * @param {*} b 
+   * @param {*} b
    * @return {boolean}
    */
   is.less = function (a, b) {
@@ -175,7 +181,7 @@
    * @function
    *
    * @param {*} a
-   * @param {*} b 
+   * @param {*} b
    * @return {boolean}
    */
   is.lessEq = function (a, b) {
@@ -190,7 +196,7 @@
    * @function
    *
    * @param {*} a
-   * @param {*} b 
+   * @param {*} b
    * @return {boolean}
    */
   is.greater = function (a, b) {
@@ -205,7 +211,7 @@
    * @function
    *
    * @param {*} a
-   * @param {*} b 
+   * @param {*} b
    * @return {boolean}
    */
   is.greaterEq = function (a, b) {
@@ -238,7 +244,7 @@
   };
 
   // Type checking predicates
-  
+
   // Create an fn function that runs a provided function on the first value
   // to be compared with the second.
   function eqfn (fn) {
@@ -315,7 +321,7 @@
   is.rgx = is.RegExp;
 
   /**
-   * Checks if value is finite. 
+   * Checks if value is finite.
    * Uses the ES6 Spec which is not correct for just isFinite.
    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite
    *
@@ -470,6 +476,34 @@
   };
 
   /**
+   * Checks if the value is positive
+   *
+   * @name pos
+   * @memberof is
+   * @function
+   *
+   * @param {Number} val
+   * @return {boolean}
+   */
+  is.pos = function (val) {
+    return is.num(val) && is.greater(val, 0);
+  };
+
+  /**
+   * Checks if the value is negative
+   *
+   * @name neg
+   * @memberof is
+   * @function
+   *
+   * @param {Number} val
+   * @return {boolean}
+   */
+  is.neg = function (val) {
+    return is.num(val) && is.less(val, 0);
+  };
+
+  /**
    * Validates that an object is an instance of a given Class.
    * You can create a instance checking function by providing only the class.
    * To test immediately, provide the instance object as well.
@@ -491,5 +525,39 @@
       return inst instanceof Cls;
     }
   };
+
+  /**
+   * Run your ternary evals through a function
+   * which removes that ugly ?: syntax!
+   *
+   * @name ternary
+   * @memberof is
+   * @function
+   *
+   * @param {*} bool
+   * @param {*} a
+   * @param {*} b
+   * @return {boolean}
+   */
+  is.ternary = function (bool, a, b) {
+    return bool ? a : b;
+  };
+
+  var omitFns = ['cmp', 'ternary'];
+
+  /**
+   * Reverses any predicate's call value
+   * ex: is.not.equal(1, 2); // true
+   *
+   * @name not
+   * @memberof is
+   * @object
+   *
+   */
+  is.not = Object.keys(is).reduce(function (acc, key) {
+    if (omitFns.indexOf(key) > 0) return acc;
+    acc[key] = not(is[key]);
+    return acc;
+  }, {});
 
 }).call(this);

@@ -7,7 +7,7 @@ require 'should'
 testClasses =
   Foo: class Foo
 testClasses.Bar = class Bar extends testClasses.Foo
-  
+
 
 addTest = (fn, val, expected, shorthand) ->
   if Array.isArray(val) and val.length
@@ -21,6 +21,14 @@ addTest = (fn, val, expected, shorthand) ->
     it "should have a shorthand method `#{shorthand}` for method `#{fn}`", ->
       Is[shorthand].should.equal Is[fn]
 
+
+addNotTest = (fn, val, expected, shorthand) ->
+  if Array.isArray(val) and val.length
+    it "should return `#{expected}` for values `#{val}`", ->
+      (Is.not[fn].apply(null, val)).should.be[expected]
+  else
+    it "should return `#{expected}` for value `#{val}`", ->
+        (Is.not[fn](val)).should.be[expected]
 
 truths = ['dog', 1, [], {}]
 falses = [null, undefined]
@@ -112,10 +120,18 @@ describe 'is', ->
     finite:
       truthy: [1, 2e64]
       falsey: [{}, [], NaN, -Infinity, Infinity, '1', new Date]
-      
+
     int:
       truthy: [1, 2e64, -5, 0]
       falsey: [{}, [], NaN, 1.2, -Infinity, Infinity, '1', new Date]
+
+    pos:
+      truthy: [1, 5, 10.2]
+      falsey: [0, -1, -2.5, 'a', {}]
+
+    neg:
+      truthy: [-1, -5, -10.2]
+      falsey: [0, 1, 2.5, 'a', {}]
 
     'instance':
       truthy: [
@@ -140,6 +156,17 @@ describe 'is', ->
 
       _.each falsey, (val) ->
         addTest methodName, val, false, shorthand
+
+  # Test negatives
+  _.each tests, (expectations, methodName) ->
+    describe "#{methodName}", ->
+      {shorthand, truthy, falsey} = expectations
+
+      _.each truthy, (val) ->
+        addNotTest methodName, val, false, shorthand
+
+      _.each falsey, (val) ->
+        addNotTest methodName, val, true, shorthand
 
   describe '#arguments', ->
     it 'should return true for arguments', ->
@@ -183,3 +210,10 @@ describe 'is', ->
       fn(new Foo).should.be.ok
       fn([]).should.be.false
 
+
+  describe '#ternary', ->
+    it 'should return a truthy value', ->
+      Is.ternary(true, 1, 2).should.equal 1
+
+    it 'should return a falsey value', ->
+      Is.ternary(false, 1, 2).should.equal 2

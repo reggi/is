@@ -41,6 +41,12 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 - Ping me on [twitter](http://twitter.com/trevor_landau) if I take too long to respond! That probably means I missed the alert/email.
 
 ## changlog
+#### 0.2.1
+- Added is.pos
+- Added is.neg
+- Added is.ternary
+- Added is.not, which inverses all boolean returning predicate methods
+
 #### 0.1.1
 - Added is.bool/boolean method
 
