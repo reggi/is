@@ -6,7 +6,15 @@
 
 [Blog post on is](http://trevorlandau.net/posts/is-js)
 
-> Link to blog post about usecases
+
+## Usage
+```
+is.equal(1, 1); // true
+is.not.pos(-1); // true
+[2, 5, 1].sort(is.cmp(is.less)); // [1, 2, 5]
+is.ternary(true, 'foo', 'bar'); // foo
+is.fn(function () {}); // true
+```
 
 ## install
 > npm install --save is-predicate
