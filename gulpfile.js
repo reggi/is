@@ -3,7 +3,6 @@
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 var jshint = require('gulp-jshint');
-var jscs = require('gulp-jscs');
 var clean = require('gulp-clean');
 var ugly = require('gulp-uglify');
 var rename = require('gulp-rename');
@@ -24,8 +23,7 @@ function getBanner () {
 gulp.task('lint', function () {
   return gulp.src(['src/**/*.js', 'gulpfile.js'])
     .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter(require('jshint-stylish')))
-    .pipe(jscs());
+    .pipe(jshint.reporter(require('jshint-stylish')));
 });
 
 gulp.task('test', function () {
