@@ -3,7 +3,7 @@
  * @version v0.2.0
  * (c) 2013 Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)
  * is.js may be freely distributed under the MIT license.
- * Generated Thu Feb 20 2014 12:16:37 GMT-0500 (EST)
+ * Generated Fri Mar 14 2014 20:23:30 GMT-0400 (EDT)
  */
 
 (function () {
@@ -40,31 +40,35 @@
   var toStringProto = ObjProto.toString;
 
   // Helpers
-  function toString (val) {
+  function toString(val) {
     return toStringProto.call(val);
   }
 
-  // Reverses the boolean output of the provided predicate
-  function invertPred (pred) {
-    return function () {
-      return !pred.apply(pred, arguments);
-    };
-  }
 
-  function prop (p) {
+  function prop(p) {
     return function (o) {
       if (is.object(o)) return o[p];
       return o;
     };
   }
 
-  function not (pred) {
+  // Start exposed methods
+
+  /**
+   * is.inverts a given predicate
+   *
+   * @name is.invert
+   * @memberof is
+   * @function
+   *
+   * @param {Function} pred
+   * @return {Function}
+   */
+  is.invert = function (pred) {
     return function () {
       return !pred.apply(is, arguments);
     };
-  }
-
-  // Start exposed methods
+  };
 
   /**
    * Tests if a value is not null or undefined
@@ -104,7 +108,7 @@
    * @param {*} val
    * @return {boolean}
    */
-  is.falsey = invertPred(is.truthy);
+  is.falsey = is.invert(is.truthy);
 
   /**
    * Tests if a value is null
@@ -512,6 +516,39 @@
   };
 
   /**
+   * Checks if a value exists in an array
+   *
+   * @name contains
+   * @memberof is
+   * @function
+   *
+   * @param {Array} arr
+   * @param {*} val
+   * @return {boolean}
+   */
+  is.contains = function(arr, val) {
+    if (!is.array(arr)) throw new TypeError('Expected an array');
+    if (!is.exists(val)) return false;
+    return is.falsey(!~arr.indexOf(val));
+  };
+
+  /**
+   * Checks if a given key exists on the given object
+   * aka not on the prototype
+   *
+   * @name has
+   * @memberof is
+   * @function
+   *
+   * @param {Object} o
+   * @param {*} key
+   * @return {boolean}
+   */
+  is.has = function(o, key) {
+    return ObjProto.hasOwnProperty.call(o, key);
+  };
+
+  /**
    * Validates that an object is an instance of a given Class.
    * You can create a instance checking function by providing only the class.
    * To test immediately, provide the instance object as well.
@@ -551,7 +588,8 @@
     return bool ? a : b;
   };
 
-  var omitFns = ['cmp', 'ternary'];
+  // These functions don't have value when set with not or other
+  var omitFns = ['cmp', 'ternary', 'invert'];
 
   /**
    * Reverses any predicate's call value
@@ -562,10 +600,11 @@
    * @object
    *
    */
-  is.not = Object.keys(is).reduce(function (acc, key) {
-    if (omitFns.indexOf(key) > 0) return acc;
-    acc[key] = not(is[key]);
+  is.not = Object.keys(is).reduce(function (acc, fn) {
+    if (is.contains(omitFns, fn)) return acc;
+    acc[fn] = is.invert(is[fn]);
     return acc;
   }, {});
+  console.log(is.not);
 
 }).call(this);

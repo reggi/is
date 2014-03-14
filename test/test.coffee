@@ -148,25 +148,27 @@ describe 'is', ->
 
   # Dynamically add tests over `tests` object
   _.each tests, (expectations, methodName) ->
-    describe "#{methodName}", ->
-      {shorthand, truthy, falsey} = expectations
+    describe 'normal tests', ->
+      describe "#{methodName}", ->
+        {shorthand, truthy, falsey} = expectations
 
-      _.each truthy, (val) ->
-        addTest methodName, val, true, shorthand
+        _.each truthy, (val) ->
+          addTest methodName, val, true, shorthand
 
-      _.each falsey, (val) ->
-        addTest methodName, val, false, shorthand
+        _.each falsey, (val) ->
+          addTest methodName, val, false, shorthand
 
   # Test negatives
   _.each tests, (expectations, methodName) ->
-    describe "#{methodName}", ->
-      {shorthand, truthy, falsey} = expectations
+    describe 'not tests', ->
+      describe "#{methodName}", ->
+        {shorthand, truthy, falsey} = expectations
 
-      _.each truthy, (val) ->
-        addNotTest methodName, val, false, shorthand
+        _.each truthy, (val) ->
+          addNotTest methodName, val, false, shorthand
 
-      _.each falsey, (val) ->
-        addNotTest methodName, val, true, shorthand
+        _.each falsey, (val) ->
+          addNotTest methodName, val, true, shorthand
 
   describe '#arguments', ->
     it 'should return true for arguments', ->
@@ -174,6 +176,41 @@ describe 'is', ->
       fn()
 
     _.each falses.concat(truths), (val) -> addTest('arguments', val, false)
+
+  describe '#invert', ->
+    before -> this.testFn = Is.invert Is.fn
+
+    it 'should return a function', ->
+      this.testFn.should.be.instanceof Function
+
+    it 'should return an inverted value', ->
+      this.testFn(Is.equal).should.false
+
+  describe '#contains', ->
+    arr = [1, 2, 3]
+    it 'should throw an error if initial value is not an array', ->
+      try
+        Is.contains('foo')
+      catch e
+        e.should.be.instanceof TypeError
+
+    it 'should return false if val doesn\'t exist', ->
+      Is.contains(arr).should.be.false
+
+    it 'should return false if the value is not found', ->
+      Is.contains(arr, 5).should.be.false
+
+    it 'should return true if the value is found', ->
+      Is.contains(arr, 1).should.be.true
+      Is.contains(arr, 2).should.be.true
+      Is.contains(arr, 3).should.be.true
+
+  describe '#has', ->
+    it 'should return true if the key is found', ->
+      Is.has({ foo: 3 }, 'foo').should.be.true
+
+    it 'should return false if the key is not on on the obj', ->
+      Is.has({ foo: 3 }, 'toString').should.be.false
 
   describe '#cmp', ->
     it 'should throw a type error', ->

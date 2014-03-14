@@ -14,14 +14,11 @@ is.not.pos(-1); // true
 [2, 5, 1].sort(is.cmp(is.less)); // [1, 2, 5]
 is.ternary(true, 'foo', 'bar'); // foo
 is.fn(function () {}); // true
+is.not.equal(1, 3); // true
 ```
 
 ## install
 > npm install --save is-predicate
-
-or
-
-> bower install --save is-predicate
 
 or
 
@@ -49,6 +46,12 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 - Ping me on [twitter](http://twitter.com/trevor_landau) if I take too long to respond! That probably means I missed the alert/email.
 
 ## changlog
+#### 0.3.0
+- Expose is.invert
+- Added is.contains
+- Added is.has
+- Remove bower support
+
 #### 0.2.0
 - Added is.pos
 - Added is.neg
