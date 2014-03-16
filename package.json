@@ -5,7 +5,7 @@
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
-    "mypublish": "npm tst && npm publish && bower update && npm run docs",
+    "mypublish": "npm tst && npm publish && npm run docs",
     "pretest": "gulp lint",
     "test": "gulp test",
     "build": "gulp build",
