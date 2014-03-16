@@ -1,9 +1,9 @@
 /**
  * @license is.js 
- * @version v0.2.0
+ * @version v0.3.1
  * (c) 2013 Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)
  * is.js may be freely distributed under the MIT license.
- * Generated Fri Mar 14 2014 20:23:30 GMT-0400 (EDT)
+ * Generated Sun Mar 16 2014 10:41:30 GMT-0400 (EDT)
  */
 
 (function () {
@@ -605,6 +605,5 @@
     acc[fn] = is.invert(is[fn]);
     return acc;
   }, {});
-  console.log(is.not);
 
 }).call(this);

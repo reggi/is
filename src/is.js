@@ -597,6 +597,5 @@
     acc[fn] = is.invert(is[fn]);
     return acc;
   }, {});
-  console.log(is.not);
 
 }).call(this);
