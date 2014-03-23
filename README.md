@@ -34,9 +34,8 @@ is.some().equal(1, 5).contains([1, 2, 3], 5).val(); // false
 
 Alternaively to `.val` you can execute `valueOf`
 ```js
-```js
 // All evaluations must be true
-is.every().equal(1, 1).contains([1, 2, 3], 2).val(); // true
+!!is.every().equal(1, 1).contains([1, 2, 3], 2); // true
 ```
 
 > Notice the alias of `all/any` if you prefer that flavor
