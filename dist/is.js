@@ -1,9 +1,9 @@
 /**
  * @license is.js 
- * @version v0.3.1
+ * @version v0.4.0
  * (c) 2013 Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)
  * is.js may be freely distributed under the MIT license.
- * Generated Sun Mar 16 2014 10:41:30 GMT-0400 (EDT)
+ * Generated Sat Mar 22 2014 21:09:30 GMT-0400 (EDT)
  */
 
 (function () {
@@ -38,18 +38,43 @@
 
   // Internal shortcuts
   var toStringProto = ObjProto.toString;
+  var _slice = Array.prototype.slice;
 
   // Helpers
   function toString(val) {
     return toStringProto.call(val);
   }
 
-
   function prop(p) {
     return function (o) {
       if (is.object(o)) return o[p];
       return o;
     };
+  }
+
+  function partial(fn) {
+    var args = _slice.call(arguments, 1);
+    return function() {
+      return fn.apply(null, args.concat(_slice.call(arguments)));
+    };
+  }
+
+  // All predicate names will be stored after definition
+  var _predicates = null;
+
+  // NOTE: do not run this until _predicates has been after all predicate
+  // definitions
+  function assignPredicates(fn) {
+    return _predicates.reduce(function (acc, fnName) {
+      acc[fnName] = fn(is[fnName], fnName);
+      return acc;
+    }, {});
+  }
+
+  function inherits(Child, Super) {
+    Child.prototype = Object.create(Super.prototype);
+    Child.prototype.constructor = Child;
+    return Child;
   }
 
   // Start exposed methods
@@ -571,6 +596,17 @@
     }
   };
 
+  // --- No predicate definitions past this line
+
+  // Add any non predicate definitions here.
+  var omitFns = [
+    'cmp', 'ternary', 'invert',
+    'not', 'every', 'noConflict',
+    'all', 'some'
+  ];
+  _predicates = Object.keys(is)
+                      .filter(partial(is.invert(is.contains), omitFns));
+
   /**
    * Run your ternary evals through a function
    * which removes that ugly ?: syntax!
@@ -588,9 +624,6 @@
     return bool ? a : b;
   };
 
-  // These functions don't have value when set with not or other
-  var omitFns = ['cmp', 'ternary', 'invert'];
-
   /**
    * Reverses any predicate's call value
    * ex: is.not.equal(1, 2); // true
@@ -600,10 +633,88 @@
    * @object
    *
    */
-  is.not = Object.keys(is).reduce(function (acc, fn) {
-    if (is.contains(omitFns, fn)) return acc;
-    acc[fn] = is.invert(is[fn]);
-    return acc;
-  }, {});
+  is.not = assignPredicates(function (fn) {
+    return is.invert(fn);
+  });
+
+  function Lazy() {
+    this.lazy = [];
+  }
+
+  Lazy.prototype = assignPredicates(function (fn) {
+    return function() {
+      this.lazy.push([fn, arguments]);
+      return this;
+    };
+  });
+
+  Lazy.prototype._val = function () {
+    return this.lazy.map(function (args) {
+      return args[0].apply(null, args[1]);
+    });
+  };
+
+  Lazy.prototype.valueOf = function () {
+    return this.val();
+  };
+
+  function Every() {
+    Lazy.call(this);
+  }
+
+  inherits(Every, Lazy);
+  Every.prototype.val = function () {
+    return this._val().every(is.truthy);
+  };
+
+  /**
+   * Enable chaining predicate calls
+   * ex: is.every().equal(1, 1).str('foo').val()
+   *
+   * @name every
+   * @memberof is
+   * @function
+   *
+   * @return {Every}
+   */
+  is.every = function () {
+    return new Every();
+  };
+
+  /**
+   * @alias every
+   * @memberof is
+   */
+  is.all = is.every;
+
+  function Some() {
+    Lazy.call(this);
+  }
+
+  inherits(Some, Lazy);
+  Some.prototype.val = function () {
+    return this._val().some(is.truthy);
+  };
+
+  /**
+   * Enable chaining predicate calls an evaluates to true
+   * if at least one predicate call returns true
+   * ex: is.some().equal(1, 1).str('foo').val();
+   *
+   * @name some
+   * @memberof is
+   * @function
+   *
+   * @return {Every}
+   */
+  is.some = function () {
+    return new Some();
+  };
+
+  /**
+   * @alias some
+   * @memberof is
+   */
+  is.any = is.some;
 
 }).call(this);

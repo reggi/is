@@ -254,3 +254,38 @@ describe 'is', ->
 
     it 'should return a falsey value', ->
       Is.ternary(false, 1, 2).should.equal 2
+
+
+  describe '#every', ->
+    it 'should map to .all', ->
+      Is.every.should.equal Is.all
+
+    it 'should return an object', ->
+      Is.every().should.be.an.object
+
+    it 'should allow chaining', ->
+      Is.every().equal(1, 1).str('5').val().should.be.ok
+      Is.every().str('foo').contains([1,2,3], 1).val().should.be.ok
+      Is.every().str(1).contains([1,2,3], 1).val().should.be.false
+      Is.every().str('foo').contains([1,2,3], 5).val().should.be.false
+
+
+  describe '#some', ->
+    it 'should map to .any', ->
+      Is.some.should.equal Is.any
+
+    it 'should return an object', ->
+      Is.some().should.be.an.object
+
+    it 'should allow chaining', ->
+      Is.some().equal(1, 1).str('5').val().should.be.ok
+      Is.some().str('foo').contains([1,2,3], 1).val().should.be.ok
+      Is.some().str(1).contains([1,2,3], 1).val().should.be.ok
+      Is.some().str('foo').contains([1,2,3], 5).val().should.be.ok
+      Is.some().num('foo').contains([1,2,3], 5).val().should.be.false
+
+  describe '#Lazy', ->
+    it 'should call `val` when valueOf is called', ->
+      +(Is.some().equal(1, 1).str('5')).should.be.ok
+      !!(Is.some().equal(1, 1).str('5')).should.be.ok
+
