@@ -82,8 +82,8 @@ describe 'is', ->
       falsey: [[0, 1]]
 
     object:
-      truthy: [{}]
-      falsey: [[], 'a', 1, new Date]
+      truthy: [{}, [], new Date]
+      falsey: [null, 'a', 1]
 
     array:
       truthy: [[]]
@@ -132,6 +132,10 @@ describe 'is', ->
     neg:
       truthy: [-1, -5, -10.2]
       falsey: [0, 1, 2.5, 'a', {}]
+
+    zero:
+      truthy: [0]
+      falsey: [1, '1', '0', {}]
 
     'instance':
       truthy: [
@@ -194,9 +198,6 @@ describe 'is', ->
       catch e
         e.should.be.instanceof TypeError
 
-    it 'should return false if val doesn\'t exist', ->
-      Is.contains(arr).should.be.false
-
     it 'should return false if the value is not found', ->
       Is.contains(arr, 5).should.be.false
 
@@ -247,14 +248,29 @@ describe 'is', ->
       fn(new Foo).should.be.ok
       fn([]).should.be.false
 
-
   describe '#ternary', ->
-    it 'should return a truthy value', ->
+    it 'should return 1 for a truthy value', ->
       Is.ternary(true, 1, 2).should.equal 1
 
-    it 'should return a falsey value', ->
+    it 'should return 2 for a falsey value', ->
       Is.ternary(false, 1, 2).should.equal 2
 
+    it 'should return 1 for a lesser value', ->
+      Is.ternary(Is.less, 1, 2).should.equal 1
+
+    it 'should return 1 for a greater value', ->
+      Is.ternary(Is.less, 2, 1).should.equal 1
+
+    it 'should return a function for a pred given', ->
+      fn = Is.ternary Is.less
+      fn.should.be.a.function
+      fn(1, 2).should.equal 1
+      fn(2, 1).should.equal 1
+
+    it 'should return a function for a pred and arg given', ->
+      fn = Is.ternary Is.less, 1
+      fn.should.be.a.function
+      fn(2).should.equal 1
 
   describe '#every', ->
     it 'should map to .all', ->
