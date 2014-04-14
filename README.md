@@ -6,6 +6,8 @@
 
 [Blog post on is](http://trevorlandau.net/posts/is-js)
 
+## Docs
+[landau.github.io/is](http://landau.github.io/is/)
 
 ## Usage
 ```js
@@ -49,24 +51,15 @@ or
 
 download the file from the [dist](https://github.com/landau/is/dist/is.js) directory
 
-## Documentation
-
-[Docs](https://github.com/landau/is/wiki/is.API)
-
-
 ## TODO
-- underscore style docs
 - deep equal on objects
-- is.not.every/some
 
 ## Author
 [Trevor Landau](http://trevorlandau.net)
 
 ## contributing
 - Suggestions welcome!
-- Ensure tests pass.
-- Write new tests for new functionality.
-- Write docs
+- Tests!
 - Ping me on [twitter](http://twitter.com/trevor_landau) if I take too long to respond! That probably means I missed the alert/email.
 
 ## changlog
