@@ -3,7 +3,7 @@
  * @version v0.5.0
  * (c) 2013 Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)
  * is.js may be freely distributed under the MIT license.
- * Generated Sun Apr 13 2014 17:14:58 GMT-0400 (EDT)
+ * Generated Sun Apr 13 2014 20:12:06 GMT-0400 (EDT)
  */
 
 (function () {
