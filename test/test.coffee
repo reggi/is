@@ -59,7 +59,7 @@ describe 'is', ->
 
     equal:
       truthy: [[0, 0], ['dog', 'dog']]
-      falsey: [[0, 1], ['cat', 'dog']]
+      falsey: [[0, 1], ['cat', 'dog'], [0, '0']]
 
     eq:
       truthy: [[0, '0']]
