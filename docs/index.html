@@ -18,23 +18,20 @@ hr {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  /* negative indent footer by its height */
+  /* negative indent footer by its height*/
   margin: 0 auto -120px;
-  /* pad bottom by footer height */
+  /*pad bottom by footer height */
   padding: 0 0 70px;
 }
 
 /* set the fixed height of the footer here */
 #footer {
-  height: 120px;
-  background-color: #222222;
-  border:0 solid #080808;
-  border-top-width: 1px;
-  margin-top:50px;
-}
-
-#footer > .container {
-  padding: 20px;
+  border: none;
+  font-weight: 100;
+  font-family: 'Droid Sans Mono', sans-serif;
+  width: 500px;
+  background: none;
+  color: #efefef;
 }
 
 body {
@@ -50,14 +47,13 @@ a, small {
 }
 
 #main {
-  margin-left: 300px;
 }
+
 #sidebar {
   height: 100%;
   padding-right: 0;
   padding-bottom: 100px;
   position: fixed;
-  top: 40px;
   left: 0;
   overflow: scroll;
 }
@@ -118,7 +114,6 @@ a, small {
     width: 41.6%;
   }
   #sidebar {
-    background-color:#3b3b3b;
     padding-top:0;
   }
   #sidebar .nav>li {
@@ -189,7 +184,7 @@ h3,h4,h5,.panel {
 
 code {
   color: #58b;
-}</style></head><body><div class="page-container"><!-- top navbar--><div role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-header"><button type="button" data-toggle="offcanvas" data-target=".sidebar-nav" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">is.js</a></div></div><div class="col-sm-12"><div class="row row-offcanvas row-offcanvas-left"><div id="sidebar" role="navigation" class="col-xs-6 col-sm-3 sidebar-offcanvas"><div data-offset-top="45" data-offset-bottom="90" class="affix-top"><ul id="sidebar-nav" class="nav"><li><a href="#not">is.not</a></li><li><a href="#exists">is.exists</a></li><li><a href="#truthy">is.truthy</a></li><li><a href="#falsey">is.falsey</a></li><li><a href="#null">is.null</a></li><li><a href="#undef">is.undef</a></li><li><a href="#equal">is.equal</a></li><li><a href="#eq">is.eq</a></li><li><a href="#less">is.less</a></li><li><a href="#lessEq">is.lessEq</a></li><li><a href="#greater">is.greater</a></li><li><a href="#greaterEq">is.greaterEq</a></li><li><a href="#object">is.object</a></li><li><a href="#array">is.array</a></li><li><a href="#date">is.date</a></li><li><a href="#rgx">is.rgx</a></li><li><a href="#finite">is.finite</a></li><li><a href="#NaN">is.NaN</a></li><li><a href="#arguments">is.arguments</a></li><li><a href="#error">is.error</a></li><li><a href="#fn">is.fn</a></li><li><a href="#num">is.num</a></li><li><a href="#str">is.str</a></li><li><a href="#bool">is.bool</a></li><li><a href="#int">is.int</a></li><li><a href="#pos">is.pos</a></li><li><a href="#neg">is.neg</a></li><li><a href="#contains">is.contains</a></li><li><a href="#has">is.has</a></li><li><a href="#instance">is.instance</a></li><li><a href="#ternary">is.ternary</a></li><li><a href="#every">is.every</a></li><li><a href="#some">is.some</a></li></ul></div></div><div id="main" data-spy="scroll" data-target="#sidebar-nav" class="col-xs-12 col-sm-9"><div class="panel panel-default"><a name="not"></a><div class="panel-heading"><h4>not<small><code>is.not</code></small></h4></div><div class="panel-body"><p>A complemented version of the <code>is</code> predicate functions.
+}</style></head><body><a href="https://github.com/landau/is"><img style="z-index:99999;position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a><div class="page-container"><!-- top navbar--><div role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-header"><button type="button" data-toggle="offcanvas" data-target=".sidebar-nav" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="" class="navbar-brand">is.js <small>v. 0.5.0</small></a></div></div><div class="col-sm-12"><div class="row row-offcanvas row-offcanvas-left"><div id="sidebar" role="navigation" class="col-xs-6 col-sm-2 sidebar-offcanvas"><div><ul id="sidebar-nav" class="nav"><li><a href="#not">is.not</a></li><li><a href="#exists">is.exists</a></li><li><a href="#truthy">is.truthy</a></li><li><a href="#falsey">is.falsey</a></li><li><a href="#null">is.null</a></li><li><a href="#undef">is.undef</a></li><li><a href="#equal">is.equal</a></li><li><a href="#eq">is.eq</a></li><li><a href="#less">is.less</a></li><li><a href="#lessEq">is.lessEq</a></li><li><a href="#greater">is.greater</a></li><li><a href="#greaterEq">is.greaterEq</a></li><li><a href="#object">is.object</a></li><li><a href="#array">is.array</a></li><li><a href="#date">is.date</a></li><li><a href="#rgx">is.rgx</a></li><li><a href="#finite">is.finite</a></li><li><a href="#NaN">is.NaN</a></li><li><a href="#arguments">is.arguments</a></li><li><a href="#error">is.error</a></li><li><a href="#fn">is.fn</a></li><li><a href="#num">is.num</a></li><li><a href="#str">is.str</a></li><li><a href="#bool">is.bool</a></li><li><a href="#int">is.int</a></li><li><a href="#pos">is.pos</a></li><li><a href="#neg">is.neg</a></li><li><a href="#contains">is.contains</a></li><li><a href="#has">is.has</a></li><li><a href="#instance">is.instance</a></li><li><a href="#ternary">is.ternary</a></li><li><a href="#every">is.every</a></li><li><a href="#some">is.some</a></li></ul></div></div><div id="main" class="col-xs-12 col-sm-7 col-sm-offset-3"><div class="panel panel-default"><a name="not"></a><div class="panel-heading"><h4>not<small><code>is.not</code></small></h4></div><div class="panel-body"><p>A complemented version of the <code>is</code> predicate functions.
 All predicate functions are available in this namespace</p>
 <hr><p><small>Example</small><pre><code class="lang-js">is.null(null) // true
 is.not.null(null) // false
@@ -232,22 +227,22 @@ is.equal([1, 2], [1, 2]) // false
 <hr><p><small>Example</small><pre><code class="lang-js">is.eq(&#39;1&#39;, 1) // true
 is.eq(&#39;a&#39;, &#39;b&#39;) // false
 </code></pre>
-</p></div></div><div class="panel panel-default"><a name="less"></a><div class="panel-heading"><h4>less<small><code>is.less(a, b)</code></small></h4><small>alias <code>is.lt(val)</code></small></div><div class="panel-body"><p>Returns true if <code>a &lt; b</code></p>
+</p></div></div><div class="panel panel-default"><a name="less"></a><div class="panel-heading"><h4>less<small><code>is.less(a, b)</code></small></h4><small>alias <code>is.lt(a, b)</code></small></div><div class="panel-body"><p>Returns true if <code>a &lt; b</code></p>
 <hr><p><small>Example</small><pre><code class="lang-js">is.less(1, 5) // true
 is.less(5, 5) // false
 is.less(5, 1) // false
 </code></pre>
-</p></div></div><div class="panel panel-default"><a name="lessEq"></a><div class="panel-heading"><h4>lessEq<small><code>is.lessEq(a, b)</code></small></h4><small>alias <code>is.ltEq(val)</code></small></div><div class="panel-body"><p>Returns true if <code>a &lt;= b</code></p>
+</p></div></div><div class="panel panel-default"><a name="lessEq"></a><div class="panel-heading"><h4>lessEq<small><code>is.lessEq(a, b)</code></small></h4><small>alias <code>is.ltEq(a, b)</code></small></div><div class="panel-body"><p>Returns true if <code>a &lt;= b</code></p>
 <hr><p><small>Example</small><pre><code class="lang-js">is.lessEq(1, 5) // true
 is.lessEq(5, 5) // true
 is.lessEq(5, 1) // false
 </code></pre>
-</p></div></div><div class="panel panel-default"><a name="greater"></a><div class="panel-heading"><h4>greater<small><code>is.greater(a, b)</code></small></h4><small>alias <code>is.gt(val)</code></small></div><div class="panel-body"><p>Returns true if <code>a &gt; b</code></p>
+</p></div></div><div class="panel panel-default"><a name="greater"></a><div class="panel-heading"><h4>greater<small><code>is.greater(a, b)</code></small></h4><small>alias <code>is.gt(a, b)</code></small></div><div class="panel-body"><p>Returns true if <code>a &gt; b</code></p>
 <hr><p><small>Example</small><pre><code class="lang-js">is.greater(5, 1) // true
 is.greater(5, 5) // false
 is.greater(1, 5) // false
 </code></pre>
-</p></div></div><div class="panel panel-default"><a name="greaterEq"></a><div class="panel-heading"><h4>greaterEq<small><code>is.greaterEq(a, b)</code></small></h4><small>alias <code>is.gtEq(val)</code></small></div><div class="panel-body"><p>Returns true if <code>a &gt; b</code></p>
+</p></div></div><div class="panel panel-default"><a name="greaterEq"></a><div class="panel-heading"><h4>greaterEq<small><code>is.greaterEq(a, b)</code></small></h4><small>alias <code>is.gtEq(a, b)</code></small></div><div class="panel-body"><p>Returns true if <code>a &gt; b</code></p>
 <hr><p><small>Example</small><pre><code class="lang-js">is.greaterEq(5, 1) // true
 is.greaterEq(5, 5) // true
 is.greaterEq(1, 5) // false
@@ -393,7 +388,7 @@ chain.NaN(1).val(); // true
 is.some().exists(null).str(&#39;asteroid&#39;).val(); // true
 is.some().exists(null).str(1).val(); // false
 </code></pre>
-</p></div></div></div></div></div><div id="footer"><!-- footer--><div class="container"><div class="row"><ul class="list-unstyled"><li class="col-sm-4 col-xs-6"><a href="#">About</a></li><li class="col-sm-4 col-xs-6"><a href="#">Services</a></li><li class="col-sm-4 col-xs-6"><a href="#">Studies</a></li><li class="col-sm-4 col-xs-6"><a href="#">References</a></li><li class="col-sm-4 col-xs-6"><a href="#">Login</a></li><li class="col-sm-4 col-xs-6"><a href="#">Press</a></li><li class="col-sm-4 col-xs-6"><a href="#">Contact</a></li><li class="col-sm-4 col-xs-6"><a href="#">Impressum</a></li></ul></div></div></div><div id="push"></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script>$(document).ready(function() {
+</p></div></div><hr><div id="footer" class="well">Copyright &copy 2013-2014&nbsp;<a href="http://trevorlandau.net">Trevor Landau</a></div></div></div></div><div id="push"></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script>$(document).ready(function() {
   $('[data-toggle=offcanvas]').click(function() {
     $('.row-offcanvas').toggleClass('active');
   });
