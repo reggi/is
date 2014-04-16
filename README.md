@@ -4,10 +4,16 @@
 
 `is.js` is a predicate library for JS. `is` doesn't have any dependencies which makes it easy to integrate into new and existing projects.
 
-[Blog post on is](http://trevorlandau.net/posts/is-js)
-
 ## Docs
 [landau.github.io/is](http://landau.github.io/is/)
+
+## install
+> npm install --save is-predicate
+
+or
+
+download the file from the [dist](https://github.com/landau/is/dist/is.js) directory
+
 
 ## Usage
 ```js
@@ -44,16 +50,6 @@ Alternaively to `.val` you can execute `valueOf`
 
 > NOTE: Chaining doesnt work with `.not` yet.
 
-## install
-> npm install --save is-predicate
-
-or
-
-download the file from the [dist](https://github.com/landau/is/dist/is.js) directory
-
-## TODO
-- deep equal on objects
-
 ## Author
 [Trevor Landau](http://trevorlandau.net)
 
@@ -63,6 +59,13 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 - Ping me on [twitter](http://twitter.com/trevor_landau) if I take too long to respond! That probably means I missed the alert/email.
 
 ## changlog
+#### 0.6.0
+- Removed `cmp` as it seems out of scope
+- Added `is.empty`
+- Alias `is.invert` as `is.complement`
+- Expose `is.partial` from internals
+- Improved docs
+
 #### 0.5.0
 - Added `is.zero`
 - Fix `is.object` and `is.error`

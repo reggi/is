@@ -213,34 +213,6 @@ describe 'is', ->
     it 'should return false if the key is not on on the obj', ->
       Is.has({ foo: 3 }, 'toString').should.be.false
 
-  describe '#cmp', ->
-    it 'should throw a type error', ->
-      try
-        Is.cmp()
-      catch e
-        e.should.be.instanceOf TypeError
-
-    it 'should return a function', ->
-      (Is.cmp(Is.greater)).should.be.instanceOf Function
-
-    it 'should sort values with a specified predicate', ->
-      vals = _.shuffle _.range 10
-      vals.sort(Is.cmp(Is.less))
-      c = 0
-      _.each vals, (val) -> val.should.equal c++
-
-    it 'should sort values with a specified predicate and property accessor', ->
-      vals = _.shuffle [
-        { name: 'albert'}
-        { name: 'bob'}
-        { name: 'cat'}
-      ]
-
-      vals.sort(Is.cmp(Is.greater, 'name'))
-      vals[0].name.should.equal 'cat'
-      vals[1].name.should.equal 'bob'
-      vals[2].name.should.equal 'albert'
-
   describe '#instance as a high order fn', ->
     it 'should return a function that checks instances of Foo', ->
       fn = Is.instance testClasses.Foo
@@ -305,3 +277,13 @@ describe 'is', ->
       +(Is.some().equal(1, 1).str('5')).should.be.ok
       !!(Is.some().equal(1, 1).str('5')).should.be.ok
 
+  describe '#partial', ->
+    fn = null
+    before ->
+      fn = Is.partial(Is.less, 1)
+
+    it 'should return a fn', ->
+      fn.should.be.a.function
+
+    it 'should exec the fn as expected', ->
+      fn(2).should.be.ok

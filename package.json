@@ -1,6 +1,6 @@
 {
   "name": "is-predicate",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A set of predicate functions to improve your value testing and comparisons.",
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
@@ -28,7 +28,11 @@
     "type",
     "instance",
     "comparator",
-    "compare"
+    "compare",
+    "partial",
+    "is",
+    "testing",
+    "test"
   ],
   "travis-cov": {
     "threshold": 95
