@@ -1,9 +1,9 @@
 /**
  * @license is.js 
- * @version v0.5.0
+ * @version v0.6.0
  * (c) 2013 Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)
  * is.js may be freely distributed under the MIT license.
- * Generated Sun Apr 13 2014 20:12:06 GMT-0400 (EDT)
+ * Generated Wed Apr 16 2014 10:18:54 GMT-0400 (EDT)
  */
 
 (function () {
@@ -42,20 +42,6 @@
     return toStringProto.call(val);
   }
 
-  function prop(p) {
-    return function (o) {
-      if (is.object(o)) return o[p];
-      return o;
-    };
-  }
-
-  function partial(fn) {
-    var args = _slice.call(arguments, 1);
-    return function() {
-      return fn.apply(null, args.concat(_slice.call(arguments)));
-    };
-  }
-
   // All predicate names will be stored after definition
   var _predicates = null;
 
@@ -74,19 +60,16 @@
     return Child;
   }
 
-  // Start exposed methods
+  // --- Start exposed methods
 
-  /**
-   * is.inverts a given predicate
-   *
-   * @name is.invert
-   * @memberof is
-   * @function
-   *
-   * @param {Function} pred
-   * @return {Function}
-   */
-  is.invert = function (pred) {
+  var partial = is.partial = function (fn) {
+    var args = _slice.call(arguments, 1);
+    return function() {
+      return fn.apply(null, args.concat(_slice.call(arguments)));
+    };
+  };
+
+  is.complement = is.invert = function (pred) {
     return function () {
       return !pred.apply(is, arguments);
     };
@@ -136,32 +119,7 @@
     return is.equal(a, b) || is.greater(a, b);
   };
 
-  /**
-   * Creates a comparator function ran against a predicate function.
-   * Pass option
-   *
-   * @name cmp
-   * @memberof is
-   * @function
-   *
-   * @param {function} pred
-   * @param {string} [p] - Key accessor for objects
-   * @return {function} - Comparator function
-   */
-  is.cmp = function (pred, p) {
-    if (!is.fn(pred)) throw new TypeError('predicate provided is not a function');
-    var propFn = prop(p);
-
-    return function (a, b) {
-      a = propFn(a);
-      b = propFn(b);
-      if (pred(a, b)) return -1;
-      if (pred(b, a)) return 1;
-      return 0;
-    };
-  };
-
-  // Type checking predicates
+  // --- Type checking predicates
 
   // Create an fn function that runs a provided function on the first value
   // to be compared with the second.
@@ -263,11 +221,19 @@
     }
   };
 
+  is.empty = function (o) {
+    if (is.not.exists(o)) return true;
+    if (is.some().array(o).str(o).val()) return is.zero(o.length);
+    for (var k in o) if (is.has(o, k)) return false;
+    return true;
+  };
+
+  // TODO refactor for browserify
   // --- No predicate definitions past this line
 
   // Add any non predicate definitions here.
   var omitFns = [
-    'cmp', 'ternary', 'invert',
+    'ternary', 'invert',
     'not', 'every', 'noConflict',
     'all', 'some'
   ];
