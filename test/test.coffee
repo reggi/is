@@ -190,6 +190,9 @@ describe 'is', ->
     it 'should return an inverted value', ->
       this.testFn(Is.equal).should.false
 
+    it 'should alias complement', ->
+      (Is.invert).should.equal((Is.complement))
+
   describe '#contains', ->
     arr = [1, 2, 3]
     it 'should throw an error if initial value is not an array', ->

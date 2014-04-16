@@ -82,13 +82,24 @@ html(lang='en')
       #sidebar .nav {
         width: 95%;
       }
+
       #sidebar li {
         border:0 #1e1e1e solid;
         border-bottom-width:1px;
+        margin-left: 10px;
       }
+
+      #sidebar li.heading {
+        border:0 #1e1e1e solid;
+        border-bottom-width:1px;
+        margin-left: 0px;
+        font-size: 125%;
+      }
+
       #sidebar li a {
         padding-left:1px;
       }
+
       #sidebar li a:hover {
         background-color:#222222;
         color:#ffffff;
@@ -207,13 +218,14 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
           a.navbar-brand(href='') is.js 
-            small v. 0.5.0
+            small v. 0.6.0
       .col-sm-12
         .row.row-offcanvas.row-offcanvas-left
           //- sidebar
           #sidebar.col-xs-6.col-sm-2.sidebar-offcanvas(role='navigation')
             div
               ul#sidebar-nav.nav
+                li.heading: a(href='#predicates') Predicates
                 li: a(href='#not') is.not
                 li: a(href='#exists') is.exists
                 li: a(href='#truthy') is.truthy
@@ -241,15 +253,23 @@ html(lang='en')
                 li: a(href='#int') is.int
                 li: a(href='#pos') is.pos
                 li: a(href='#neg') is.neg
+                li: a(href='#zero') is.zero
                 li: a(href='#contains') is.contains
                 li: a(href='#has') is.has
                 li: a(href='#instance') is.instance
                 li: a(href='#ternary') is.ternary
+
+                li.heading: a(href='#chaining') Chaining
                 li: a(href='#every') is.every
                 li: a(href='#some') is.some
 
+                li.heading: a(href='#utils') Utils
+                li: a(href='#complement') is.complement
+                li: a(href='#partial') is.partial
+
           //- main area
           #main.col-xs-12.col-sm-7.col-sm-offset-3
+            a(name='predicates')
             .panel.panel-default
               a(name='not')
               .panel-heading
@@ -875,6 +895,7 @@ html(lang='en')
                     is.ternary(is.less, 1, 2); // 1
                     is.ternary(1 < 2, 'a', 'b'); // 'a'
                     ```
+            a(name='chaining')
             .panel.panel-default
               a(name='every')
               .panel-heading
@@ -927,6 +948,48 @@ html(lang='en')
 
                     is.some().exists(null).str('asteroid').val(); // true
                     is.some().exists(null).str(1).val(); // false
+                    ```
+            a(name='utils')
+            .panel.panel-default
+              a(name='complement')
+              .panel-heading
+                h4 complement
+                  small: code is.complement(fn)
+                small alias
+                  code is.invert(fn)
+
+              .panel-body
+                :markdown
+                  Returns a function a that receives the same args as `fn` and returns
+                  the opposite truth value.
+
+                small Used internally
+                hr
+                p
+                  small Example
+                  :markdown
+                    ```js
+                    var fn = is.complement(is.fn);
+                    fn(is.fn); // false
+                    ```
+            .panel.panel-default
+              a(name='partial')
+              .panel-heading
+                h4 partial
+                  small: code is.partial(fn, ...)
+
+              .panel-body
+                :markdown
+                  Returns a partiall applied function based on `fn`.
+
+                small Used internally
+                hr
+                p
+                  small Example
+                  :markdown
+                    ```js
+                    var fn = is.partial(is.less, 1);
+                    fn(2); // true
                     ```
             hr
             #footer.well

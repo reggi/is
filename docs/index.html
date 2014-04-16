@@ -73,13 +73,24 @@ a, small {
 #sidebar .nav {
   width: 95%;
 }
+
 #sidebar li {
   border:0 #1e1e1e solid;
   border-bottom-width:1px;
+  margin-left: 10px;
 }
+
+#sidebar li.heading {
+  border:0 #1e1e1e solid;
+  border-bottom-width:1px;
+  margin-left: 0px;
+  font-size: 125%;
+}
+
 #sidebar li a {
   padding-left:1px;
 }
+
 #sidebar li a:hover {
   background-color:#222222;
   color:#ffffff;
@@ -184,7 +195,7 @@ h3,h4,h5,.panel {
 
 code {
   color: #58b;
-}</style></head><body><a href="https://github.com/landau/is"><img style="z-index:99999;position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a><div class="page-container"><!-- top navbar--><div role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-header"><button type="button" data-toggle="offcanvas" data-target=".sidebar-nav" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="" class="navbar-brand">is.js <small>v. 0.5.0</small></a></div></div><div class="col-sm-12"><div class="row row-offcanvas row-offcanvas-left"><div id="sidebar" role="navigation" class="col-xs-6 col-sm-2 sidebar-offcanvas"><div><ul id="sidebar-nav" class="nav"><li><a href="#not">is.not</a></li><li><a href="#exists">is.exists</a></li><li><a href="#truthy">is.truthy</a></li><li><a href="#falsey">is.falsey</a></li><li><a href="#null">is.null</a></li><li><a href="#undef">is.undef</a></li><li><a href="#equal">is.equal</a></li><li><a href="#eq">is.eq</a></li><li><a href="#less">is.less</a></li><li><a href="#lessEq">is.lessEq</a></li><li><a href="#greater">is.greater</a></li><li><a href="#greaterEq">is.greaterEq</a></li><li><a href="#object">is.object</a></li><li><a href="#array">is.array</a></li><li><a href="#date">is.date</a></li><li><a href="#rgx">is.rgx</a></li><li><a href="#finite">is.finite</a></li><li><a href="#NaN">is.NaN</a></li><li><a href="#arguments">is.arguments</a></li><li><a href="#error">is.error</a></li><li><a href="#fn">is.fn</a></li><li><a href="#num">is.num</a></li><li><a href="#str">is.str</a></li><li><a href="#bool">is.bool</a></li><li><a href="#int">is.int</a></li><li><a href="#pos">is.pos</a></li><li><a href="#neg">is.neg</a></li><li><a href="#contains">is.contains</a></li><li><a href="#has">is.has</a></li><li><a href="#instance">is.instance</a></li><li><a href="#ternary">is.ternary</a></li><li><a href="#every">is.every</a></li><li><a href="#some">is.some</a></li></ul></div></div><div id="main" class="col-xs-12 col-sm-7 col-sm-offset-3"><div class="panel panel-default"><a name="not"></a><div class="panel-heading"><h4>not<small><code>is.not</code></small></h4></div><div class="panel-body"><p>A complemented version of the <code>is</code> predicate functions.
+}</style></head><body><a href="https://github.com/landau/is"><img style="z-index:99999;position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a><div class="page-container"><!-- top navbar--><div role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-header"><button type="button" data-toggle="offcanvas" data-target=".sidebar-nav" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="" class="navbar-brand">is.js <small>v. 0.6.0</small></a></div></div><div class="col-sm-12"><div class="row row-offcanvas row-offcanvas-left"><div id="sidebar" role="navigation" class="col-xs-6 col-sm-2 sidebar-offcanvas"><div><ul id="sidebar-nav" class="nav"><li class="heading"><a href="#predicates">Predicates</a></li><li><a href="#not">is.not</a></li><li><a href="#exists">is.exists</a></li><li><a href="#truthy">is.truthy</a></li><li><a href="#falsey">is.falsey</a></li><li><a href="#null">is.null</a></li><li><a href="#undef">is.undef</a></li><li><a href="#equal">is.equal</a></li><li><a href="#eq">is.eq</a></li><li><a href="#less">is.less</a></li><li><a href="#lessEq">is.lessEq</a></li><li><a href="#greater">is.greater</a></li><li><a href="#greaterEq">is.greaterEq</a></li><li><a href="#object">is.object</a></li><li><a href="#array">is.array</a></li><li><a href="#date">is.date</a></li><li><a href="#rgx">is.rgx</a></li><li><a href="#finite">is.finite</a></li><li><a href="#NaN">is.NaN</a></li><li><a href="#arguments">is.arguments</a></li><li><a href="#error">is.error</a></li><li><a href="#fn">is.fn</a></li><li><a href="#num">is.num</a></li><li><a href="#str">is.str</a></li><li><a href="#bool">is.bool</a></li><li><a href="#int">is.int</a></li><li><a href="#pos">is.pos</a></li><li><a href="#neg">is.neg</a></li><li><a href="#zero">is.zero</a></li><li><a href="#contains">is.contains</a></li><li><a href="#has">is.has</a></li><li><a href="#instance">is.instance</a></li><li><a href="#ternary">is.ternary</a></li><li class="heading"><a href="#chaining">Chaining</a></li><li><a href="#every">is.every</a></li><li><a href="#some">is.some</a></li><li class="heading"><a href="#utils">Utils</a></li><li><a href="#complement">is.complement</a></li><li><a href="#partial">is.partial</a></li></ul></div></div><div id="main" class="col-xs-12 col-sm-7 col-sm-offset-3"><a name="predicates"></a><div class="panel panel-default"><a name="not"></a><div class="panel-heading"><h4>not<small><code>is.not</code></small></h4></div><div class="panel-body"><p>A complemented version of the <code>is</code> predicate functions.
 All predicate functions are available in this namespace</p>
 <hr><p><small>Example</small><pre><code class="lang-js">is.null(null) // true
 is.not.null(null) // false
@@ -367,7 +378,7 @@ pred2(2); // 1
 is.ternary(is.less, 1, 2); // 1
 is.ternary(1 &lt; 2, &#39;a&#39;, &#39;b&#39;); // &#39;a&#39;
 </code></pre>
-</p></div></div><div class="panel panel-default"><a name="every"></a><div class="panel-heading"><h4>every<small><code>is.every()</code></small></h4><small>alias <code>is.all()</code></small></div><div class="panel-body"><p>Returns a chainable interface for lazily executing predicates.</p>
+</p></div></div><a name="chaining"></a><div class="panel panel-default"><a name="every"></a><div class="panel-heading"><h4>every<small><code>is.every()</code></small></h4><small>alias <code>is.all()</code></small></div><div class="panel-body"><p>Returns a chainable interface for lazily executing predicates.</p>
 <p>Invoke <code>.val()</code> which returns <code>true</code> if all predicates evaluate
 to <code>true</code>.</p>
 <hr><p><small>Example</small><pre><code class="lang-js">var chain = is.every();
@@ -387,6 +398,15 @@ chain.NaN(1).val(); // true
 
 is.some().exists(null).str(&#39;asteroid&#39;).val(); // true
 is.some().exists(null).str(1).val(); // false
+</code></pre>
+</p></div></div><a name="utils"></a><div class="panel panel-default"><a name="complement"></a><div class="panel-heading"><h4>complement<small><code>is.complement(fn)</code></small></h4><small>alias<code>is.invert(fn)</code></small></div><div class="panel-body"><p>Returns a function a that receives the same args as <code>fn</code> and returns
+the opposite truth value.</p>
+<small>Used internally</small><hr><p><small>Example</small><pre><code class="lang-js">var fn = is.complement(is.fn);
+fn(is.fn); // false
+</code></pre>
+</p></div></div><div class="panel panel-default"><a name="partial"></a><div class="panel-heading"><h4>partial<small><code>is.partial(fn, ...)</code></small></h4></div><div class="panel-body"><p>Returns a partiall applied function based on <code>fn</code>.</p>
+<small>Used internally</small><hr><p><small>Example</small><pre><code class="lang-js">var fn = is.partial(is.less, 1);
+fn(2); // true
 </code></pre>
 </p></div></div><hr><div id="footer" class="well">Copyright &copy 2013-2014&nbsp;<a href="http://trevorlandau.net">Trevor Landau</a></div></div></div></div><div id="push"></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script>$(document).ready(function() {
   $('[data-toggle=offcanvas]').click(function() {
