@@ -10,7 +10,7 @@
     "test": "gulp test",
     "build": "gulp build",
     "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html",
-    "docs": "jade < ./docs/index.jade > ./docs/index.html"
+    "docs": "jade ./docs/index.jade --out ./docs"
   },
   "homepage": "http://github.com/landau/is",
   "repository": {

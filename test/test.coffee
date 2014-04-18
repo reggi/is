@@ -137,6 +137,14 @@ describe 'is', ->
       truthy: [0]
       falsey: [1, '1', '0', {}]
 
+    even:
+      truthy: [2, 4, -6]
+      falsey: [0, 1, 3, 'foo']
+
+    odd:
+      truthy: [1, 3, -11]
+      falsey: [0, 2, 4, 'foo']
+
     'instance':
       truthy: [
         [Object, {}]
@@ -290,3 +298,8 @@ describe 'is', ->
 
     it 'should exec the fn as expected', ->
       fn(2).should.be.ok
+
+  describe '#mod', ->
+    it 'should return a modulus value', ->
+      Is.mod(6, 5).should.equal 1
+      Is.mod(6, 6).should.equal 0

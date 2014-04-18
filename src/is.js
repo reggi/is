@@ -75,7 +75,7 @@
     return val !== false && is.exists(val);
   };
 
-  is.falsey = is.invert(is.truthy);
+  is.falsey = is.complement(is.truthy);
 
   is.null = function (val) {
     return is.equal(val, null);
@@ -194,6 +194,18 @@
     return is.num(val) && is.equal(val, 0);
   };
 
+  is.even = function (val) {
+    return is.num(val) &&
+           is.not.zero(val) &&
+           is.zero(is.mod(val, 2));
+  };
+
+  is.odd = function (val) {
+    return is.num(val) &&
+           is.not.zero(val) &&
+           is.not.zero(is.mod(val, 2));
+  };
+
   is.contains = function(arr, val) {
     if (!is.array(arr)) throw new TypeError('Expected an array');
     return is.falsey(!~arr.indexOf(val));
@@ -220,36 +232,27 @@
     return true;
   };
 
-  // TODO refactor for browserify
   // --- No predicate definitions past this line
 
   // Add any non predicate definitions here.
   var omitFns = [
-    'ternary', 'invert',
+    'ternary', 'invert', 'partial',
     'not', 'every', 'noConflict',
-    'all', 'some'
+    'all', 'some', 'complement',
+    'mod'
   ];
   _predicates = Object.keys(is)
-                      .filter(partial(is.invert(is.contains), omitFns));
+                      .filter(partial(is.complement(is.contains), omitFns));
 
   is.ternary = function (pred, a, b) {
-    if (is.boolean(pred)) return pred ? a : b;
+    if (is.bool(pred)) return pred ? a : b;
     if (is.undef(a)) return partial(is.ternary, pred);
     if (is.undef(b)) return partial(is.ternary, pred, a);
     return is.ternary(pred(a, b), a, b);
   };
 
-  /**
-   * Reverses any predicate's call value
-   * ex: is.not.equal(1, 2); // true
-   *
-   * @name not
-   * @memberof is
-   * @object
-   *
-   */
   is.not = assignPredicates(function (fn) {
-    return is.invert(fn);
+    return is.complement(fn);
   });
 
   function Lazy() {
@@ -282,16 +285,6 @@
     return this._val().every(is.truthy);
   };
 
-  /**
-   * Enable chaining predicate calls
-   * ex: is.every().equal(1, 1).str('foo').val()
-   *
-   * @name every
-   * @memberof is
-   * @function
-   *
-   * @return {Every}
-   */
   is.all = is.every = function () {
     return new Every();
   };
@@ -306,5 +299,9 @@
   };
   is.any = is.some = function () {
     return new Some();
+  };
+
+  is.mod = function (a, b) {
+    return a % b;
   };
 }).call(this);

@@ -35,7 +35,6 @@ hr {
 }
 
 body {
-  padding-top: 51px; 
   background: #1E1E1E;
   color: #f9f9f9;
 }
@@ -47,6 +46,7 @@ a, small {
 }
 
 #main {
+  padding-top: 30px;
 }
 
 #sidebar {
@@ -195,7 +195,46 @@ h3,h4,h5,.panel {
 
 code {
   color: #58b;
-}</style></head><body><a href="https://github.com/landau/is"><img style="z-index:99999;position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a><div class="page-container"><!-- top navbar--><div role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-header"><button type="button" data-toggle="offcanvas" data-target=".sidebar-nav" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="" class="navbar-brand">is.js <small>v. 0.6.0</small></a></div></div><div class="col-sm-12"><div class="row row-offcanvas row-offcanvas-left"><div id="sidebar" role="navigation" class="col-xs-6 col-sm-2 sidebar-offcanvas"><div><ul id="sidebar-nav" class="nav"><li class="heading"><a href="#predicates">Predicates</a></li><li><a href="#not">is.not</a></li><li><a href="#exists">is.exists</a></li><li><a href="#truthy">is.truthy</a></li><li><a href="#falsey">is.falsey</a></li><li><a href="#null">is.null</a></li><li><a href="#undef">is.undef</a></li><li><a href="#equal">is.equal</a></li><li><a href="#eq">is.eq</a></li><li><a href="#less">is.less</a></li><li><a href="#lessEq">is.lessEq</a></li><li><a href="#greater">is.greater</a></li><li><a href="#greaterEq">is.greaterEq</a></li><li><a href="#object">is.object</a></li><li><a href="#array">is.array</a></li><li><a href="#date">is.date</a></li><li><a href="#rgx">is.rgx</a></li><li><a href="#finite">is.finite</a></li><li><a href="#NaN">is.NaN</a></li><li><a href="#arguments">is.arguments</a></li><li><a href="#error">is.error</a></li><li><a href="#fn">is.fn</a></li><li><a href="#num">is.num</a></li><li><a href="#str">is.str</a></li><li><a href="#bool">is.bool</a></li><li><a href="#int">is.int</a></li><li><a href="#pos">is.pos</a></li><li><a href="#neg">is.neg</a></li><li><a href="#zero">is.zero</a></li><li><a href="#contains">is.contains</a></li><li><a href="#has">is.has</a></li><li><a href="#instance">is.instance</a></li><li><a href="#ternary">is.ternary</a></li><li class="heading"><a href="#chaining">Chaining</a></li><li><a href="#every">is.every</a></li><li><a href="#some">is.some</a></li><li class="heading"><a href="#utils">Utils</a></li><li><a href="#complement">is.complement</a></li><li><a href="#partial">is.partial</a></li></ul></div></div><div id="main" class="col-xs-12 col-sm-7 col-sm-offset-3"><a name="predicates"></a><div class="panel panel-default"><a name="not"></a><div class="panel-heading"><h4>not<small><code>is.not</code></small></h4></div><div class="panel-body"><p>A complemented version of the <code>is</code> predicate functions.
+}
+
+.jumbotron {
+  background-color: transparent;
+  border-radius: 1px;
+}
+
+.jumbotron h1 {
+  color: #bbb;
+}
+
+.jumbotron h4 {
+  color: #666;
+}
+
+.jumbotron a {
+  color: #8be;
+}
+.jumbotron small {
+  font-size: 16px;
+  color: #666;
+}
+
+.jumbotron p {
+  font-size: 14px;
+}</style></head><body><a href="https://github.com/landau/is"><img style="z-index:99999;position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a><div class="page-container"><div class="col-sm-12"><div class="row row-offcanvas row-offcanvas-left"><div id="sidebar" role="navigation" class="col-xs-6 col-sm-2 sidebar-offcanvas"><div><ul id="sidebar-nav" class="nav"><li class="heading"><a href="#intro">Intro</a></li><li class="heading"><a href="#predicates">Predicates</a></li><li><a href="#not">is.not</a></li><li><a href="#exists">is.exists</a></li><li><a href="#truthy">is.truthy</a></li><li><a href="#falsey">is.falsey</a></li><li><a href="#null">is.null</a></li><li><a href="#undef">is.undef</a></li><li><a href="#equal">is.equal</a></li><li><a href="#eq">is.eq</a></li><li><a href="#less">is.less</a></li><li><a href="#lessEq">is.lessEq</a></li><li><a href="#greater">is.greater</a></li><li><a href="#greaterEq">is.greaterEq</a></li><li><a href="#object">is.object</a></li><li><a href="#array">is.array</a></li><li><a href="#date">is.date</a></li><li><a href="#rgx">is.rgx</a></li><li><a href="#finite">is.finite</a></li><li><a href="#NaN">is.NaN</a></li><li><a href="#arguments">is.arguments</a></li><li><a href="#error">is.error</a></li><li><a href="#fn">is.fn</a></li><li><a href="#num">is.num</a></li><li><a href="#str">is.str</a></li><li><a href="#bool">is.bool</a></li><li><a href="#int">is.int</a></li><li><a href="#pos">is.pos</a></li><li><a href="#neg">is.neg</a></li><li><a href="#zero">is.zero</a></li><li><a href="#even">is.even</a></li><li><a href="#odd">is.odd</a></li><li><a href="#contains">is.contains</a></li><li><a href="#has">is.has</a></li><li><a href="#instance">is.instance</a></li><li><a href="#ternary">is.ternary</a></li><li class="heading"><a href="#chaining">Chaining</a></li><li><a href="#every">is.every</a></li><li><a href="#some">is.some</a></li><li class="heading"><a href="#utils">Utils</a></li><li><a href="#complement">is.complement</a></li><li><a href="#partial">is.partial</a></li><li><a href="#mod">is.mod</a></li></ul></div></div><div id="main" class="col-xs-12 col-sm-7 col-sm-offset-3"><a name="intro"></a><div class="jumbotron"><h1>is<small>v. 0.6.0</small></h1><h4>Predicates for JavaScript</h4><br><p><a href="https://github.com/landau/is">is</a> provides a slew of functions that allow
+you to compare values and test types. This leads to more functional, concise, 
+legible, and correct code.</p>
+<p>This is extremely useful when filtering data or comparing against a set of data. </p>
+<pre><code class="lang-js">  [&#39;venus&#39;, &#39;neptune&#39;, 1, []].filter(is.str); // [&#39;venus&#39;, &#39;neptune&#39;]
+  [1.2, 3, 5].every(is.int) // false
+</code></pre>
+<p>Make room on your utility belt next to <a href="http://underscorejs.org">underscore.js</a>.</p>
+<pre><code class="lang-js">  _.filter([1, 2, 3], _.partial(is.less, 1)); // [2, 3]
+  _.partition([1, -2, -3, 4], is.pos); // [[1, 4], [-2, -3]]
+</code></pre>
+<p>The project is <a href="https://github.com/landau/is">hosted on GitHub</a>.
+You can report bugs and discuss features on the <a href="https://github.com/landau/is/issues">issues page</a> 
+or send tweets to <a href="https://twitter.com/trevor_landau">@trevor_landau</a>.</p>
+<h5>Install/Downloads</h5><p>Node<code>npm install --save is-predicate</code></p><p>Development<code><a src="https://raw.githubusercontent.com/landau/is/master/dist/is.js">is.js </a></code></p><p>Production<code><a src="https://raw.githubusercontent.com/landau/is/master/dist/is.min.js">is.min.js</a></code></p></div><a name="predicates"></a><h1>Predicates</h1><hr><div class="panel panel-default"><a name="not"></a><div class="panel-heading"><h4>not<small><code>is.not</code></small></h4></div><div class="panel-body"><p>A complemented version of the <code>is</code> predicate functions.
 All predicate functions are available in this namespace</p>
 <hr><p><small>Example</small><pre><code class="lang-js">is.null(null) // true
 is.not.null(null) // false
@@ -342,6 +381,16 @@ is.neg(0) // false
 is.zero(-2) // false
 is.zero(1) // false
 </code></pre>
+</p></div></div><div class="panel panel-default"><a name="even"></a><div class="panel-heading"><h4>even<small><code>is.even(val)</code></small></h4></div><div class="panel-body"><p>Returns true if <code>val</code> is a <code>number</code>, not <code>zero</code>, and it&#39;s modulus of 2  is zero</p>
+<hr><p><small>Example</small><pre><code class="lang-js">is.even(2) // true
+is.even(0) // false
+is.even(1) // false
+</code></pre>
+</p></div></div><div class="panel panel-default"><a name="odd"></a><div class="panel-heading"><h4>odd<small><code>is.odd(val)</code></small></h4></div><div class="panel-body"><p>Returns true if <code>val</code> is a <code>number</code>, not <code>zero</code>, and it&#39;s modulus of 2 is not zero</p>
+<hr><p><small>Example</small><pre><code class="lang-js">is.odd(1) // true
+is.odd(2) // false
+is.odd(0) // false
+</code></pre>
 </p></div></div><div class="panel panel-default"><a name="contains"></a><div class="panel-heading"><h4>contains<small><code>is.contains(arr, val)</code></small></h4></div><div class="panel-body"><p>Returns true if <code>val</code> exists in <code>arr</code></p>
 <hr><p><small>Example</small><pre><code class="lang-js">var arr = [1, 2, 3, 4];
 is.contains(arr, 2) // true
@@ -378,7 +427,7 @@ pred2(2); // 1
 is.ternary(is.less, 1, 2); // 1
 is.ternary(1 &lt; 2, &#39;a&#39;, &#39;b&#39;); // &#39;a&#39;
 </code></pre>
-</p></div></div><a name="chaining"></a><div class="panel panel-default"><a name="every"></a><div class="panel-heading"><h4>every<small><code>is.every()</code></small></h4><small>alias <code>is.all()</code></small></div><div class="panel-body"><p>Returns a chainable interface for lazily executing predicates.</p>
+</p></div></div><a name="chaining"></a><h1>Chaining</h1><hr><div class="panel panel-default"><a name="every"></a><div class="panel-heading"><h4>every<small><code>is.every()</code></small></h4><small>alias <code>is.all()</code></small></div><div class="panel-body"><p>Returns a chainable interface for lazily executing predicates.</p>
 <p>Invoke <code>.val()</code> which returns <code>true</code> if all predicates evaluate
 to <code>true</code>.</p>
 <hr><p><small>Example</small><pre><code class="lang-js">var chain = is.every();
@@ -399,7 +448,7 @@ chain.NaN(1).val(); // true
 is.some().exists(null).str(&#39;asteroid&#39;).val(); // true
 is.some().exists(null).str(1).val(); // false
 </code></pre>
-</p></div></div><a name="utils"></a><div class="panel panel-default"><a name="complement"></a><div class="panel-heading"><h4>complement<small><code>is.complement(fn)</code></small></h4><small>alias<code>is.invert(fn)</code></small></div><div class="panel-body"><p>Returns a function a that receives the same args as <code>fn</code> and returns
+</p></div></div><a name="utils"></a><h1>Utils</h1><hr><div class="panel panel-default"><a name="complement"></a><div class="panel-heading"><h4>complement<small><code>is.complement(fn)</code></small></h4><small>alias<code>is.invert(fn)</code></small></div><div class="panel-body"><p>Returns a function a that receives the same args as <code>fn</code> and returns
 the opposite truth value.</p>
 <small>Used internally</small><hr><p><small>Example</small><pre><code class="lang-js">var fn = is.complement(is.fn);
 fn(is.fn); // false
@@ -408,7 +457,50 @@ fn(is.fn); // false
 <small>Used internally</small><hr><p><small>Example</small><pre><code class="lang-js">var fn = is.partial(is.less, 1);
 fn(2); // true
 </code></pre>
-</p></div></div><hr><div id="footer" class="well">Copyright &copy 2013-2014&nbsp;<a href="http://trevorlandau.net">Trevor Landau</a></div></div></div></div><div id="push"></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script>$(document).ready(function() {
+</p></div></div><div class="panel panel-default"><a name="mod"></a><div class="panel-heading"><h4>mod<small><code>is.mod(a, b)</code></small></h4></div><div class="panel-body"><p>Returns the value of <code>a % b</code></p>
+<small>Used internally</small><hr><p><small>Example</small><pre><code class="lang-js">is.mod(6, 5); // 1
+is.mod(6, 6); // 0
+</code></pre>
+</p></div></div><hr>## changelog
+#### 0.6.0
+- Added `even`, `odd`
+- Exposed `mod`
+- Even more improved docs!
+
+#### 0.6.0
+- Removed `cmp` 
+- Added `is.empty`
+- Alias `is.invert` as `is.complement`
+- Expose `is.partial` from internals
+- Improved docs
+
+#### 0.5.0
+- Added `is.zero`
+- Fix `is.object` and `is.error`
+- `is.ternary` now supports partial application
+- `is.gt`, `is.gtEq`, `is.lt`, `is.ltEq` aliases added
+
+#### 0.4.0
+- Support for lazy chain evaluation
+
+#### 0.3.0
+- Expose `is.invert
+- Added `is.contains
+- Added `is.has
+- Remove bower support
+
+#### 0.2.0
+- Added `is.pos`
+- Added `is.neg`
+- Added `is.ternary`
+- Added `is.not`, which inverses all boolean returning predicate methods
+
+#### 0.1.1
+- Added is.bool/boolean method
+
+#### 0.1.0
+- Release
+<div id="footer" class="well">Copyright &copy 2013-2014&nbsp;<a href="http://trevorlandau.net">Trevor &lambda;andau</a></div></div></div></div><script src="is.min.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script>$(document).ready(function() {
   $('[data-toggle=offcanvas]').click(function() {
     $('.row-offcanvas').toggleClass('active');
   });
