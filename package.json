@@ -1,16 +1,16 @@
 {
   "name": "is-predicate",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A set of predicate functions to improve your value testing and comparisons.",
   "main": "src/is.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
   "scripts": {
-    "mypublish": "npm tst && npm publish && npm run docs",
     "pretest": "gulp lint",
     "test": "gulp test",
     "build": "gulp build",
     "cover": "cover run node_modules/mocha/bin/_mocha && cover report html && opener ./cover_html/index.html",
-    "docs": "jade ./docs/index.jade --out ./docs"
+    "docs": "jade ./docs/index.jade --out ./docs",
+    "changelog": "tail -n +4 ./docs/changelog.jade > CHANGELOG.md"
   },
   "homepage": "http://github.com/landau/is",
   "repository": {

@@ -21,9 +21,11 @@ html(lang='en')
             include ./intro
             include ./docs
             hr
-            include ../changelog.md
+            include ./changelog
             #footer.well
-              | Copyright &copy 2013-2014&nbsp;
+              | Copyright &copy&nbsp 
+              #{'2013-' + (new Date).getFullYear()}
+              | &nbsp;
               a(href='http://trevorlandau.net') Trevor &lambda;andau
 
       script(src='is.min.js')
