@@ -1,6 +1,6 @@
 {
   "name": "is-predicate",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "A set of predicate functions to improve your value testing and comparisons.",
   "main": "index.js",
   "author": "Trevor Landau <landautrevor@gmail.com> (http://trevorlandau.net)",
@@ -13,7 +13,8 @@
     "build-dev": "cat ./docs/banner.txt > ./dist/is.js && browserify -s is index.js >> ./dist/is.js",
     "build-prod": "cat ./docs/banner.txt > ./dist/is.min.js && uglifyjs ./dist/is.js >> ./dist/is.min.js",
     "build": "npm run build-dev && npm run build-prod",
-    "clean": "rm ./dist/* ./docs/index.html CHANGELOG.md"
+    "clean": "rm ./dist/* ./docs/index.html CHANGELOG.md",
+    "prepare": "npm ts && npm run build && npm build-docs"
   },
   "homepage": "http://github.com/landau/is",
   "repository": {

@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/landau/is.png?branch=master)](https://travis-ci.org/landau/is)
 [![NPM](https://nodei.co/npm/is-predicate.png?downloads=true&stars=true)](https://nodei.co/npm/is-predicate/)
-# is.js - Adding clarity and conciseness to your JS
+# is.js - Adding clarity and conciseness to your JS through predicates
 
 `is.js` is a predicate library for JS. `is` doesn't have any dependencies which makes it easy to integrate into new and existing projects.
 

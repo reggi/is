@@ -7,7 +7,7 @@
 'use strict';
 
 var is = module.exports = {};
-is.VERSION = '0.7.1';
+is.VERSION = '0.7.2';
 
 // Support for globoal and module.exports
 //if (typeof exports !== 'undefined') {
