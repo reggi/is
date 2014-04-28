@@ -1,5 +1,11 @@
     ## changelog
-    #### 0.6.0
+    #### 0.7.1
+    - Converted module to node style package
+    - build process changed to use browserify standalone
+    - Tests now in JS instead of CS
+    - Internal changes around chaining
+    
+    #### 0.7.0
     - Added `even`, `odd`
     - Exposed `mod`
     - Even more improved docs!

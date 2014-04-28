@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/landau/is.png?branch=master)](https://travis-ci.org/landau/is)
 [![NPM](https://nodei.co/npm/is-predicate.png?downloads=true&stars=true)](https://nodei.co/npm/is-predicate/)
-# is.js - NOT an assertion library
+# is.js - Adding clarity and conciseness to your JS
 
 `is.js` is a predicate library for JS. `is` doesn't have any dependencies which makes it easy to integrate into new and existing projects.
 
@@ -25,7 +25,7 @@ is.fn(function () {}); // true
 is.not.equal(1, 3); // true
 ```
 
-## Every/Some
+### Every/Some
 
 Every and some are functions that allow you to chain predicate calls. The calls are not evaluated until `.val()` is executed on the chain.
 
@@ -57,3 +57,13 @@ Alternaively to `.val` you can execute `valueOf`
 - Suggestions welcome!
 - Tests!
 - Ping me on [twitter](http://twitter.com/trevor_landau) if I take too long to respond! That probably means I missed the alert/email.
+
+## Tests
+
+To run tests, install devDeps and type `npm ts`
+
+## Building
+
+To build, type `npm run build`.
+
+This will create a UMDified version of is in the `dist` directory along with a minified version. 
