@@ -1,9 +1,13 @@
     ## changelog
+    #### 0.7.2
+    - Update docs
+
     #### 0.7.1
     - Converted module to node style package
-    - build process changed to use browserify standalone
-    - Tests now in JS instead of CS
+    - build process uses browserify standalone
+    - Tests now in JS instead of CS (run much faster!)
     - Internal changes around chaining
+    - Dropped gulp
     
     #### 0.7.0
     - Added `even`, `odd`
