@@ -19,7 +19,6 @@ download the file from the [dist](https://github.com/landau/is/dist/is.js) direc
 ```js
 is.equal(1, 1); // true
 is.not.pos(-1); // true
-[2, 5, 1].sort(is.cmp(is.less)); // [1, 2, 5]
 is.ternary(true, 'foo', 'bar'); // foo
 is.fn(function () {}); // true
 is.not.equal(1, 3); // true
@@ -66,4 +65,4 @@ To run tests, install devDeps and type `npm ts`
 
 To build, type `npm run build`.
 
-This will create a UMDified version of is in the `dist` directory along with a minified version. 
+This will create a UMDified version of is in the `dist` directory along with a minified version.
